@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('token', 255);
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('expires_at')->nullable();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('expires_at')->nullable();
         });
     }
 
