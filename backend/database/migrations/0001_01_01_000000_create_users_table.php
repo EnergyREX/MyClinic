@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('dni', 20)->unique();
-            $table->string('pfpimg', 255)->nullable(); // Ruta de la imagen de perfil del usuario.
+            $table->string('pfpimg', 255)->nullable()->default(''); // Ruta de la imagen de perfil del usuario.
             $table->string('name', 100);
             $table->string('surname', 100);
             $table->string('address', 255);

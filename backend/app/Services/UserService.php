@@ -21,34 +21,20 @@ class UserService {
       'phone_number' => $request['phone_number'],
       'email' => $request['email'],
       'password' => $request['password'],
-      'role_id' => $request['role_id'],
+      'role_id' => 1
     ]);
     
     // Response of the created user
     return response()->json(['success' => true, 'data' => $user], 200);
   }
 
-  // Registrar a un doctor.
 
-  // Logueo de un usuario usando JWT.
-  function login(Request $request) {
-    $credentials = $request->only(['email', 'password']);
+  // Login with JWT.
+  function login(array $request) {
     
-    // En caso de que no encuentre el usuario.
-    if(!$token = auth('api')->attempt($credentials)) {
-        return response()->json(['error' => 'Unauthorized'], 401);
-    }
-
-    // Almacena el token dentro de la base de datos ('jwt_tokens')
-       
-    // Si encuentra el usuario, devuelve un objeto con los datos del mismo. No incluye la contraseña.
-    return response()->json([
-        'token' => $token,
-        [
-        'id' => auth()->user()->id, 
-        'user_id' => auth()->user()->role_id
-        ],
-    ]);
+    $token = auth()->attempt($request);
+    
+    return response()->json($token);
   }
 
   // Para un logout de un usuario.
