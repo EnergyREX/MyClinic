@@ -2,6 +2,7 @@
 
 namespace App\Services;
 use App\Models\JwtToken;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -9,9 +10,22 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class UserService {
 
 
-  // Registrar a un usuario.
-  function register() {
-
+  // Register an user.
+  function register(array $request) {
+    // From validated data, creates the user.
+    $user = User::create([
+      'dni' => $request['dni'],
+      'name' => $request['name'],
+      'surname' => $request['surname'],
+      'address' => $request['address'],
+      'phone_number' => $request['phone_number'],
+      'email' => $request['email'],
+      'password' => $request['password'],
+      'role_id' => $request['role_id'],
+    ]);
+    
+    // Response of the created user
+    return response()->json(['success' => true, 'data' => $user], 200);
   }
 
   // Registrar a un doctor.
