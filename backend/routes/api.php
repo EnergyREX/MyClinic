@@ -2,17 +2,25 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
-Route::controller(AppointmentController::class)->group(function () {
-  Route::post('/appointment', 'store');
+// Api routes
+
+
+// Auth routes
+Route::prefix('auth')->controller(AuthController::class)->group(function () {
+  Route::post('/register', 'store')->name('register');
+  Route::post('/login', 'login')->name('login');
 });
 
-Route::group(['middleware' => 'api', 'prefix' => 'auth'], 
-function() {
-  Route::controller(AuthController::class)->group(function () {
-    Route::post('/register', 'store');
-    Route::post('/login', 'login');
+// Protected Routes.
+Route::middleware('validateToken')->group(function() {
+  Route::post('/logout', 'logout')->name('logout');
+  
+  // Appointment Routes.
+  Route::prefix('appointments')->middleware('auth:api')->controller(AppointmentController::class)->group(function () {
+    Route::get('/', 'index')->middleware('permission:view_appointments');
+    Route::post('/', 'store')->middleware('permission:create_appointment');
   });
+
 });
