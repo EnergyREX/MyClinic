@@ -14,6 +14,7 @@ class AuthController extends Controller
         $this->userService = $userService;
     }
 
+    // Register
     function store(Request $request) {
         // Validates the fields
 
@@ -36,6 +37,7 @@ class AuthController extends Controller
         return response()->json($data);
     }
 
+    // Login
     function login(Request $request) {
         $validatedData = $request->validate([
             'email' => ['required', 'email', 'max:255'],
@@ -44,6 +46,12 @@ class AuthController extends Controller
 
         $data = $this->userService->login($validatedData);
 
+        return response()->json($data);
+    }
+
+    // Logout
+    function logout() {
+        $data = $this->userService->logout();
         return response()->json($data);
     }
 }
