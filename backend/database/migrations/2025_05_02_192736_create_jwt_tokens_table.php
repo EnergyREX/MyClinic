@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('jwt_tokens', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('token', 255);
+            $table->string('token', 1000);
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('expires_at')->nullable();
         });
