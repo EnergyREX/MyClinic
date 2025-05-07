@@ -13,7 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'permission' => \App\Http\Middleware\Permission::class
+            'permission' => \App\Http\Middleware\Permission::class,
+            'validateToken' => \App\Http\Middleware\ValidateTokenInDatabase::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
