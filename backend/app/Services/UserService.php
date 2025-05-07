@@ -5,6 +5,7 @@ use App\Models\JwtToken;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Payload;
@@ -57,13 +58,14 @@ class UserService {
   
       // Get payload from this token.
       $payload = JWTAuth::setToken($token)->getPayload();
-      $date = Carbon::createFromTimestamp($payload->get('exp'));
+      $date = Carbon::parse($payload->get('exp'));
   
       // Register data in the database:
       JwtToken::create([
         'user_id' => $user->id,
         'token' => $token,
-        'expires_at' => $date->toDateString()
+        'created_at' => Carbon::now(),
+        'expires_at' => $date
       ]);
   
       return response()->json(compact('token'));
@@ -75,15 +77,12 @@ class UserService {
   
 
   // User logout.
-  function logout() {
+  function logout($token) {
     // Gets the user's JWT from request.
-    $user = auth('api')->user();
+    $dbToken = DB::table('jwt_tokens')->where('token', $token)->first();
 
-    // Destroys.
-    JwtToken::where('user_id', $user->id)->delete();
-
-    // Invalidates the token
-    auth('api')->logout();
+    JwtToken::destroy($dbToken->id);
+    JWTAuth::logout();
 
     // Returns a response.
     return response()->json([

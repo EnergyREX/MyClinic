@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\UserService;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -51,7 +52,10 @@ class AuthController extends Controller
 
     // Logout
     function logout() {
-        $data = $this->userService->logout();
+
+        $token = JWTAuth::getToken();
+        $data = $this->userService->logout($token);
+
         return response()->json($data);
     }
 }
