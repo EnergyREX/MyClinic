@@ -3,6 +3,8 @@
 namespace App\Services;
 use App\Models\JwtToken;
 use App\Models\User;
+use App\Models\Role;
+use App\Models\Permission;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -48,8 +50,6 @@ class UserService {
       // Custom claims.
       $customClaims = [
         'id' => $user->id,
-        'name' => $user->name,
-        'surname' => $user->surname,
         'role_id' => $user->role_id,
       ];
   
@@ -58,17 +58,31 @@ class UserService {
   
       // Get payload from this token.
       $payload = JWTAuth::setToken($token)->getPayload();
-      $date = Carbon::parse($payload->get('exp'));
+      $date = $payload->get('exp');
   
       // Register data in the database:
       JwtToken::create([
         'user_id' => $user->id,
         'token' => $token,
-        'created_at' => Carbon::now(),
+        'created_at' => Carbon::now()->timestamp,
         'expires_at' => $date
       ]);
+
+      // Get all user perms and store them in an array
+      $userPerms = User::with('role.permission')->find($user->id)->role->permission;
+      foreach ($userPerms as $permission) {
+        $permissions[] = $permission->name; 
+      }
   
-      return response()->json(compact('token'));
+      // Return an appropiate response.
+      return response()->json([
+        "token" => $token,
+        "user_id" => $user->id,
+        "role_id" => $user->role_id,
+        "name" => $user->name,
+        "surname" => $user->surname,
+        "permissions" => $permissions
+      ]);
   
     } catch (JWTException $e) {
       return response()->json(['error' => 'Could not create the token.'], 500);
