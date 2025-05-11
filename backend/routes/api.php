@@ -4,27 +4,31 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
+
+  // CORS testing route (debug purpose)
+  Route::get('/cors', function() {
+      return response()->json(['message' => 'Juan hijo de Juan']);
+  });
+
 // Api routes
-
-
-// Auth routes
-Route::prefix('auth')->controller(AuthController::class)->group(function () {
-  Route::post('/register', 'store')->name('register');
-  Route::post('/login', 'login')->name('login');
-});
-
-// Protected Routes.
-Route::middleware('validateToken')->group(function() {
-  
-  // Logout route
+  // Auth routes
   Route::prefix('auth')->controller(AuthController::class)->group(function () {
-    Route::post('/logout', 'logout')->name('logout');
+    Route::post('/register', 'store')->name('register');
+    Route::post('/login', 'login')->name('login');
   });
 
-  // Appointment Routes.
-  Route::prefix('appointments')->middleware('auth:api')->controller(AppointmentController::class)->group(function () {
-    Route::get('/', 'index')->middleware('permission:view_appointm<ents');
-    Route::post('/', 'store')->middleware('permission:create_appointment');
-  });
+  // Protected Routes.
+  Route::middleware('validateToken')->group(function() {
+    
+    // Logout route
+    Route::prefix('auth')->controller(AuthController::class)->group(function () {
+      Route::post('/logout', 'logout')->name('logout');
+    });
 
-});
+    // Appointment Routes.
+    Route::prefix('appointments')->middleware('auth:api')->controller(AppointmentController::class)->group(function () {
+      Route::get('/', 'index')->middleware('permission:view_appointm<ents');
+      Route::post('/', 'store')->middleware('permission:create_appointment');
+    });
+
+  });
