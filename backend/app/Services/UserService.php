@@ -36,58 +36,73 @@ class UserService {
   // Login with JWT.
   function login(array $request) {
     $credentials = ['email' => $request['email'], 'password' => $request['password']];
-  
+
     try {
-      if (! $token = JWTAuth::attempt($credentials)) {
+      if (!$token = JWTAuth::attempt($credentials)) {
         return response()->json([
           'success' => false,
           'error' => 'Invalid credentials'
         ], 401);
       }
-  
+
       $user = auth('api')->user();
-  
-      // Custom claims.
+
+      // Obtain permissions
+      $userPerms = User::with('role.permission')->find($user->id)->role->permission;
+      $permissions = [];
+      foreach ($userPerms as $permission) {
+        $permissions[] = $permission->name;
+      }
+
+      // If a token already exists
+      $existingToken = JwtToken::where('user_id', $user->id)->first();
+
+      if ($existingToken) {
+        return response()->json([
+          "token" => $existingToken->token,
+          "user_id" => $user->id,
+          "role_id" => $user->role_id,
+          "name" => $user->name,
+          "surname" => $user->surname,
+          "permissions" => $permissions
+        ]);
+      }
+
+      // If doesn't exist a token
       $customClaims = [
         'id' => $user->id,
         'role_id' => $user->role_id,
       ];
-  
-      // Creates the token with claims.
-      $token = JWTAuth::claims($customClaims)->fromUser($user);
-  
+
+      $newToken = JWTAuth::claims($customClaims)->fromUser($user);
+
       // Get payload from this token.
-      $payload = JWTAuth::setToken($token)->getPayload();
+      $payload = JWTAuth::setToken($newToken)->getPayload();
       $date = $payload->get('exp');
-  
-      // Register data in the database:
+
+      // Save in DB the new token
       JwtToken::create([
         'user_id' => $user->id,
-        'token' => $token,
+        'token' => $newToken,
         'created_at' => Carbon::now()->timestamp,
         'expires_at' => $date
       ]);
 
-      // Get all user perms and store them in an array
-      $userPerms = User::with('role.permission')->find($user->id)->role->permission;
-      foreach ($userPerms as $permission) {
-        $permissions[] = $permission->name; 
-      }
-  
-      // Return an appropiate response.
+      // Return the token
       return response()->json([
-        "token" => $token,
+        "token" => $newToken,
         "user_id" => $user->id,
         "role_id" => $user->role_id,
         "name" => $user->name,
         "surname" => $user->surname,
         "permissions" => $permissions
       ]);
-  
+
     } catch (JWTException $e) {
       return response()->json(['error' => 'Could not create the token.'], 500);
     }
   }
+
   
 
   // User logout.
