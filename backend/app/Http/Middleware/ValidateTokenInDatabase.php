@@ -38,11 +38,11 @@ class ValidateTokenInDatabase
 
         // Check if bearer token is ok and not expired.
         // Change it to Unix timestamp.
-        $expires_at = Carbon::parse($dbToken->expires_at)->timestamp;
-        $now = Carbon::now();
+        $expires_at = $dbToken->expires_at;
+        $now = Carbon::now()->timestamp;
 
         // If expiration date is less than actual date. If it is, removes the token.
-        if ($expires_at <= $now) {
+        if ($expires_at < $now) {
             JwtToken::destroy($dbToken->id);
             return response()->json([
                 'error' => "Expired token"
