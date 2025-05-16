@@ -58,4 +58,14 @@ class AuthController extends Controller
 
         return response()->json($data);
     }
+
+    // Returning user's permissions
+    function permissions(Request $request) {
+        $userId = auth('api')->user()->id;
+        // Call permissions()
+        $data = $this->userService->permissions($userId);
+
+        return $data;
+    }
+
 }
