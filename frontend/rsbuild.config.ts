@@ -5,7 +5,11 @@ export default defineConfig({
   plugins: [
     pluginReact()
   ],
-
+  source: {
+    define: {
+      'process.env.RSBUILD_BACKEND_URL': JSON.stringify(process.env.BACKEND_URL)
+    }
+  },
   module: {
     rules: [
       {
