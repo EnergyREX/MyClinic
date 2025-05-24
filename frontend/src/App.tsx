@@ -1,22 +1,50 @@
 import './App.css';
-import React from 'react';
-import { Button } from './Components/atoms/Button';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom';
+import Home from './template/Home.tsx';
+import Register from './template/Register';
+import Login from './template/Login';
+import NotFound from './template/NotFound.tsx';
+import ProtectedRoute from './Components/atoms/ProtectedRoute.tsx';
+import ProtectedRoutes from './Components/organisms/ProtectedRoutes.tsx';
+import { CrudPage } from './template/CrudPage.tsx';
+import CrudCard from './template/CrudCard.tsx';
+import useUserData from './hooks/useUserData.tsx';
 
 const App = () => {
+  const { permissions, recoverPermissions, clearPermissions } = useUserData()
 
-  function sendReq() {
-    fetch('http://localhost:8000/api/cors')
-    .then(response => response.json())
-    .then(data => console.log(data));
-  }
+  
+  useEffect(() => {
+    if (permissions.length == 0) {
+        recoverPermissions()
+    } else {
+      console.log(permissions)
+    }
+  }, []);
+  
 
   return (
-    <div>
-      <h1 className='text-4xl font-bold'>MyClinic - Frontend</h1>
-      <p className='text-neutral-500'>Nashe</p>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path='*' element={<NotFound />} />
 
-      <Button size='xl' type='button' style='danger' fn={sendReq}>Test</Button>
-    </div>
+        <Route element={<ProtectedRoutes permission='view_roles'/>}>
+          <Route path='/departments' element={<CrudPage />}/>
+          <Route path='/appointments' element={<CrudPage />}/>
+          <Route path='/doctors' element={<CrudPage />}/>
+          <Route path='/inventories' element={<CrudPage />}/>
+          <Route path='/invoices' element={<CrudPage />}/>
+          <Route path='/jwt-tokens' element={<CrudPage />}/>
+          <Route path='/medical-records' element={<CrudPage />}/>
+          <Route path='/crud-card' element={<ProtectedRoute permission='view_roles' element={<CrudCard />}/>} />
+          
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
