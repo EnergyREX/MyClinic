@@ -64,16 +64,10 @@ class DepartmentController extends Controller
     
         // Show all departments
         function index() {
-            $departments = Department::paginate(15);
+            $departments = Department::all();
             return response()->json([
                 'success' => true,
-                'data' => $departments->items(),
-                'pagination' => [
-                    'current_page' => $departments->currentPage(),
-                    'last_page' => $departments->lastPage(),
-                    'per_page' => $departments->perPage(),
-                    'total' => $departments->total()
-                ]
+                'data' => $departments,
             ]);
         }
     
