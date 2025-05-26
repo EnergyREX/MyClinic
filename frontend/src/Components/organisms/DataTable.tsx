@@ -11,11 +11,18 @@ import {
 } from '@tanstack/react-table';
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ChevronUp, EllipsisVertical } from 'lucide-react'
 import { Button } from '../atoms/Button';
+import TableHeader from '../molecules/TableHeader';
+import TableBody from '../molecules/TableBody';
+import Pagination from '../molecules/Pagination';
+import Select from '../molecules/Select';
+import Input from '../atoms/Input';
+import Divider from '../atoms/Divider';
 
 const DataTable = ({ data, columns }) => {
   const [ sorting, setSorting ] = useState<SortingState>([])
   const [ globalFilter, setGlobalFiltering ] = useState("")
   const [ columnVisibility, setColumnVisibility ] = useState<VisibilityState>({})
+  const [ rowSelection, setRowSelection ] = useState()
   
   const table = useReactTable({
     data,
@@ -23,8 +30,10 @@ const DataTable = ({ data, columns }) => {
     state: {
       sorting,
       globalFilter,
-      columnVisibility
+      columnVisibility,
+      rowSelection,
     },
+    onRowSelectionChange: rowSelection,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -32,21 +41,22 @@ const DataTable = ({ data, columns }) => {
 
     onColumnVisibilityChange: setColumnVisibility,
     onSortingChange: setSorting,
-    onGlobalFilterChange: setGlobalFiltering
+    onGlobalFilterChange: setGlobalFiltering,
   });
 
   return (
     <div>
-      <div>
+      <div className='flex gap-4'>
         { /* Filtering Input */}
-      <input 
+      <Input
+      className="" 
       type='text'
       value={globalFilter}
       onChange={(e) => setGlobalFiltering(e.target.value)}
        />
-        {/* Toggle (Show all) */}
-        <div className="">
+      
 
+      <Select label={"Options"}>
           <label>
             <input
               {...{
@@ -54,12 +64,10 @@ const DataTable = ({ data, columns }) => {
                 checked: table.getIsAllColumnsVisible(),
                 onChange: table.getToggleAllColumnsVisibilityHandler(),
               }}
-            />{' '}
-            Toggle All
+            />{' '} Toggle All
           </label>
-        </div>
-        {/* Toggle, eliminate one */}
-        {table.getAllLeafColumns().map(column => {
+          <Divider />
+          {table.getAllLeafColumns().map(column => {
           return (
             <div key={column.id} className="px-1">
               <label>
@@ -74,79 +82,21 @@ const DataTable = ({ data, columns }) => {
               </label>
             </div>
           )
-        })}
+        })} 
+        </Select>
       </div>
-      
-    <table className='border-1'>
-      <thead className="border-1">
-        {table.getHeaderGroups().map(headerGroup => (
-          <tr key={headerGroup.id} className="p-3">
-            {headerGroup.headers.map(header => (
-              <th
-                className="p-3 bg-neutral-600 text-neutral-100 cursor-pointer"
-                key={header.id}
-                onClick={header.column.getToggleSortingHandler()}
-              >
-                {header.isPlaceholder
-                  ? null
-                  : (
-                    <>
-                      {flexRender(header.column.columnDef.header, header.getContext())}
-                      {{
-                        asc: <ChevronUp className="inline ml-1" />,
-                        desc: <ChevronDown className="inline ml-1" />,
-                      }[header.column.getIsSorted() as string] ?? null}
-                    </>
-                  )
-                }
-              </th>
-            ))}
-            <th className="p-3 bg-neutral-600 text-neutral-100 cursor-pointer">Acciones</th>
-          </tr>
-        ))}
-      </thead>
+    <table className='border-1 max-w-xs overflow-x-auto'>
 
-      <tbody >
-        {table.getRowModel().rows.map(row => (
-          <tr className='border-1 hover:bg-neutral-400' key={row.id}>
-            {row.getVisibleCells().map(cell => (
-              <td className='p-3' key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-            <td><Button variant='primary' size='xl'><EllipsisVertical /></Button></td>
-          </tr>
-        ))}
-      </tbody>
+      <TableHeader table={table} />
+
+      <TableBody table={table} />
+
     </table>
-    { /* Pagination, future component */ }
-      <div>
-        <Button variant='primary' size='sm'
-        onClick={() => table.firstPage()}
-        disabled={!table.getCanPreviousPage()}>
-          <ChevronsLeft />
-        </Button>
 
-        <Button variant='primary' size='sm'
-        onClick={() => table.previousPage()}
-        disabled={!table.getCanPreviousPage()}>
-          <ChevronLeft />
-        </Button>
+    <div className='flex justify-between max-w-xl'>
+    <Pagination table={table} />
 
-        <Button variant='primary' size='sm'
-        onClick={() => table.nextPage()}
-        disabled={!table.getCanNextPage()}>
-          <ChevronRight />
-        </Button>
-
-        <Button variant='primary' size='sm'
-        onClick={() => table.lastPage()}
-        disabled={!table.getCanNextPage()}>
-          <ChevronsRight />
-        </Button>
-      </div>
-
-        { /* Page size modifier */}
+        { /* Page size modifier, a Select component */}
       <select
         value={table.getState().pagination.pageSize}
         onChange={e => {
@@ -159,15 +109,9 @@ const DataTable = ({ data, columns }) => {
             </option>
         ))}
       </select>
-
-        <span className="flex items-center gap-1">
-          <div>Page</div>
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of{' '}
-            {table.getPageCount().toLocaleString()}
-          </strong>
-        </span>
+      </div>
     </div>
+
   );
 };
 
