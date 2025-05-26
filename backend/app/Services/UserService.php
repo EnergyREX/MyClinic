@@ -12,6 +12,8 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Payload;
 
+use function Pest\Laravel\json;
+
 class UserService {
 
 
@@ -103,15 +105,12 @@ class UserService {
     }
   }
 
-  
-
   // User logout.
   function logout($token) {
     // Gets the user's JWT from request.
     $dbToken = DB::table('jwt_tokens')->where('token', $token)->first();
 
     JwtToken::destroy($dbToken->id);
-    JWTAuth::logout();
 
     // Returns a response.
     return response()->json([
@@ -119,4 +118,19 @@ class UserService {
       'message' => 'Deleted successfully'
     ]);
   }
+
+  function permissions ($id) {
+      // Obtain permissions
+      $userPerms = User::with('role.permission')->find(auth('api')->user()->id)->role->permission;
+      $permissions = [];
+      foreach ($userPerms as $permission) {
+        $permissions[] = $permission->name;
+      }
+
+      return response()->json([
+        'success' => true,
+        'permissions' => $permissions
+      ]);
+}
+
 }
