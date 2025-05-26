@@ -10,6 +10,45 @@ class AppointmentController extends Controller
 {
     protected $appointmentService;
 
+        // Departments info
+        function info() {
+            $data = [
+            'title' => 'Appointments',
+            'noun' => 'appointment',
+            'endpoints' => [
+                "index" => '/appointments',
+                "show" => '/appointments/{id}',
+                "all" => '/appointments/all',
+                "info" => '/appointments/info',
+                "create" => '/appointments',
+                "update" => '/appointments/{id}',
+                "delete" => '/appointments/{id}'
+            ],
+            'formFields' => [
+                ["name" => "doctor_dni", "type" => "text"],
+                ["name" => "patient_dni", "type" => "text"], 
+                ["name" => "status", "type" => "select", "options" => ['Pending', 'Cancelled', 'Completed']],
+                ["name" => "hour", "type" => "time"],
+                ["name" => "date", "type" => "date"],
+            ]
+        ];
+        
+        return $data;
+        }
+
+        function columns() {
+            $data = [
+                [ 'header' => 'ID', 'accessorKey' => 'id' ],
+                [ 'header' => 'Patient DNI', 'accessorKey' => 'patient_dni' ],
+                [ 'header' => 'Doctor DNI', 'accessorKey' => 'doctor_dni' ],
+                [ 'header' => 'Status', 'accessorKey' => 'status_id' ],
+                [ 'header' => 'Hour', 'accessorKey' => 'hour' ],
+                [ 'header' => 'Date', 'accessorKey' => 'date' ],
+            ];
+
+            return $data;
+        }
+
     public function __construct(AppointmentService $appointmentService)
     {
         $this->appointmentService = $appointmentService;
