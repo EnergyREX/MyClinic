@@ -12,13 +12,13 @@ export const Button = ({ children, size, variant, className, disabled, ...props 
     // Possible styles:
     // primary, secondary, danger, danger-secondary, sucess, success-secondary
     const classes: Record<string, string> = {
-      primary: "bg-blue-500 border-blue-500 dark:bg-blue-700 dark:border-blue-700 dark:text-white m-0.5",
+      primary: "bg-blue-500 text-neutral-950 border-blue-500 dark:bg-blue-700 dark:border-blue-700 dark:text-white m-0.5",
       secondary: "border-2 border-blue-500 bg-blue-500/70 dark:border-blue-700 dark:bg-blue-700/30 dark:text-white m-0.5",
       danger: "bg-red-500 dark:bg-red-700 dark:text-white m-0.5",
       dangerSecondary: "border-2 border-red-500 bg-red-500/70 dark:border-red-700 dark:bg-red-700/30 dark:text-white m-0.5",
       success: "bg-green-500 dark:bg-green-700 dark:text-white m-0.5",
       successSecondary: "border-2 border-green-500 bg-green-500/70 dark:border-green-700 dark:bg-green-700/30 dark:text-white m-0.5",
-      neutral: "bg-neutral-500 dark:bg-neutral-200 dark:text-neutral-900 font-medium dark:text-white m-0.5",
+      neutral: "bg-neutral-500 text-neutral-900 dark:bg-neutral-200 dark:text-neutral-50 font-medium dark:text-white m-0.5",
       neutralSecondary: "border-2 border-neutral-500 bg-neutral-200/70 dark:border-neutral-200 dark:bg-neutral-200/70 dark:text-neutral-900 font-medium dark:text-white m-0.5"
     }
 
