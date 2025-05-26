@@ -1,6 +1,8 @@
 import { redirect } from 'react-router-dom'
 import { create } from 'zustand'
 
+const apiURL = import.meta.env.PUBLIC_BACKEND_URL;
+
 interface State {
   permissions: string[]
   addPermission: (perm: string) => void
@@ -28,7 +30,7 @@ const useUserData = create<State>((set, get) => ({
 
     if (token) {
       try {
-      const response = await fetch('http://localhost:8000/api/auth/permissions', {
+      const response = await fetch(`${apiURL}/api/auth/permissions`, {
         method: 'GET',
         mode: 'cors',
         headers: {
