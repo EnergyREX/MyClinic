@@ -17,6 +17,7 @@ import Pagination from '../molecules/Pagination';
 import Select from '../molecules/Select';
 import Input from '../atoms/Input';
 import Divider from '../atoms/Divider';
+import Option from '../atoms/Option';
 
 const DataTable = ({ data, columns }) => {
   const [ sorting, setSorting ] = useState<SortingState>([])
@@ -57,29 +58,26 @@ const DataTable = ({ data, columns }) => {
       
 
       <Select label={"Options"}>
-          <label>
-            <input
+            <Option
+            label='Toggle All'
               {...{
                 type: 'checkbox',
                 checked: table.getIsAllColumnsVisible(),
                 onChange: table.getToggleAllColumnsVisibilityHandler(),
               }}
-            />{' '} Toggle All
-          </label>
+            />{' '}
           <Divider />
           {table.getAllLeafColumns().map(column => {
           return (
             <div key={column.id} className="px-1">
-              <label>
-                <input
+                <Option
+                label={column.id}
                   {...{
                     type: 'checkbox',
                     checked: column.getIsVisible(),
                     onChange: column.getToggleVisibilityHandler(),
                   }}
                 />{' '}
-                {column.id}
-              </label>
             </div>
           )
         })} 
