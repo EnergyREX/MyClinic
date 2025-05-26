@@ -10,6 +10,7 @@ import ProtectedRoutes from './Components/organisms/ProtectedRoutes.tsx';
 import { CrudPage } from './template/CrudPage.tsx';
 import CrudCard from './template/CrudCard.tsx';
 import useUserData from './hooks/useUserData.tsx';
+import Departments from './pages/Departments.tsx';
 
 const App = () => {
   const { permissions, recoverPermissions, clearPermissions } = useUserData()
@@ -33,7 +34,7 @@ const App = () => {
         <Route path='*' element={<NotFound />} />
 
         <Route element={<ProtectedRoutes permission='view_roles'/>}>
-          <Route path='/departments' element={<CrudPage />}/>
+          <Route path='/departments' element={<Departments />}/>
           <Route path='/appointments' element={<CrudPage />}/>
           <Route path='/doctors' element={<CrudPage />}/>
           <Route path='/inventories' element={<CrudPage />}/>
