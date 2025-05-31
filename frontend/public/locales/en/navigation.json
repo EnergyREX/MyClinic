@@ -1,0 +1,15 @@
+{
+    "navigation": {
+    "appointments": "Appointments",
+    "departments": "Departments",
+    "doctors": "Doctors",
+    "inventories": "Inventory",
+    "invoices": "Pending payments",
+    "access-tokens": "Sessions",
+    "medical-records": "Medical Records",
+    "roles": "Roles",
+    "suppliers": "Suppliers",
+    "treatments": "Treatments",
+    "auto-diagnosis": "Auto diagnosis"
+  }
+}

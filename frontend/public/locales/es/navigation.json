@@ -1,0 +1,15 @@
+{
+    "navigation": {
+    "appointments": "Citas",
+    "departments": "Departamentos",
+    "doctors": "Doctores",
+    "inventories": "Inventario",
+    "invoices": "Pagos pendientes",
+    "access-tokens": "Sesiones",
+    "medical-records": "Registros médicos",
+    "roles": "Roles",
+    "suppliers": "Proveedores",
+    "treatments": "Tratamientos",
+    "auto-diagnosis": "Auto Diagnóstico"
+  }
+}
