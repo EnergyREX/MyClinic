@@ -16,7 +16,7 @@ const Layout = ({children, className, title}:props) => {
 
   return (
     <>
-    <main className={`dark:bg-neutral-700 min-h-dvh min-w-dvh ${className}`}>
+    <main className={`grid grid-cols-8 dark:bg-neutral-700 dark:text-white min-h-dvh min-w-dvh ${className}`}>
       {children}
     </main>
     </>
