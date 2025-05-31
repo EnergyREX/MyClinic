@@ -45,7 +45,7 @@ const useUserData = create<State>((set, get) => ({
 
       if (response.status === 401) {
         localStorage.clear()
-        redirect('/')
+        redirect('/login')
       }
 
       permissions.forEach((perm: string) => {
