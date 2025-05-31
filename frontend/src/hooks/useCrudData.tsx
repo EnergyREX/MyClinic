@@ -74,7 +74,7 @@ export function useCrudData() {
   }, [isLoadingData])
 
   return { info, getInfoURL, 
-           data, getDataURL,
+           data, setData, getDataURL,
            columns, getColumnsURL,  
            isLoadingData,
           }
