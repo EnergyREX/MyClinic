@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { Table, flexRender } from '@tanstack/react-table'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
-const TableHeader = ({ table }) => {
+const DataTableHeader = ({ table }) => {
   return (
         <thead className="border-1">
         {table.getHeaderGroups().map(headerGroup => (
@@ -27,11 +27,10 @@ const TableHeader = ({ table }) => {
                 }
               </th>
             ))}
-            <th className="p-3 bg-neutral-600 text-neutral-100 cursor-pointer">Acciones</th>
           </tr>
         ))}
       </thead>
   )
 }
 
-export default TableHeader
+export default DataTableHeader

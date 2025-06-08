@@ -5,8 +5,13 @@ interface props {
 }
 
 const SidenavFooter = ({children}: props) => {
+
+  const classes: string = ""
+
   return (
-    <div>{children}</div>
+    <div className={`${classes}`}>
+      {children}
+    </div>
   )
 }
 

@@ -47,10 +47,6 @@ const SidenavBody = () => {
         <Link to="/treatments" label={t('navigation.treatments')}>
           <TestTubes />
         </Link>
-
-        <Link to="/treatments" label={t('navigation.auto-diagnosis')}>
-          <Bot />
-        </Link>
     </div>
   )
 }

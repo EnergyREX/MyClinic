@@ -3,16 +3,11 @@ import { Link } from 'react-router-dom'
 import Typography from '../atoms/Typography'
 import Divider from '../atoms/Divider'
 
-interface props {
-  children: ReactNode
-}
-
-const SidenavHeader = ({children}: props) => {
+const SidenavHeader = () => {
   return (
-    <div className='mb-3'>
+    <div className=''>
       <Link to={"/"}>
         <Typography variant='h1'>MyClinic</Typography>
-        <Divider />
       </Link>
     </div>
   )

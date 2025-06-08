@@ -1,8 +1,12 @@
 import React from 'react'
 import { Button } from '../atoms/Button'
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 const Pagination = ({table}) => {
+
+  const { t } = useTranslation('common')
+
   return (
       <div className='flex gap-2 mt-2'>
         <Button variant='primary' size='sm'
@@ -30,9 +34,9 @@ const Pagination = ({table}) => {
         </Button>
 
         <span className="flex items-center gap-1">
-          <div>Page</div>
+          <div>{t('page')}</div>
           <strong>
-            {table.getState().pagination.pageIndex + 1} of{' '}
+            {table.getState().pagination.pageIndex + 1} {t('of')}{' '}
             {table.getPageCount().toLocaleString()}
           </strong>
         </span>

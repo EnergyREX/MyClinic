@@ -4,7 +4,7 @@ import { Button } from '../atoms/Button'
 import { EllipsisVertical } from 'lucide-react'
 import Dropdown from './Dropdown'
 
-const TableBody = ({table}) => {
+const DataTableBody = ({ table }) => {
   return (
       <tbody >
         {table.getRowModel().rows.map(row => (
@@ -14,11 +14,10 @@ const TableBody = ({table}) => {
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
-            <td><Dropdown><EllipsisVertical /></Dropdown></td>
           </tr>
         ))}
       </tbody>
   )
 }
 
-export default TableBody
+export default DataTableBody
