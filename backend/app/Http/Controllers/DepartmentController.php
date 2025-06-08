@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Department;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class DepartmentController extends Controller
@@ -105,7 +106,21 @@ class DepartmentController extends Controller
     
             return response()->json([
                 'success' => true,
-                'message' => "Status eliminated"
+                'message' => "Department eliminated"
             ]);
         }
+
+        public function destroyMany(Request $request)
+        {
+            $ids = $request->input('ids'); 
+
+            DB::table('departments')->whereIn('id', $ids)->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Massive deletion executed.',
+            ]);
+        }
+
+
 }
