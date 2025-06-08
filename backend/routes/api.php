@@ -42,6 +42,7 @@ use Illuminate\Support\Facades\Route;
       Route::post('/', 'store')->middleware('permission:create_departments');
       Route::patch('/{id}', 'update')->middleware('permission:update_departments');
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_departments');
+      Route::delete('/', 'destroyMany')->middleware('permission:delete_departments');
     });
 
     Route::prefix('doctors')->middleware('auth:api')->controller(DoctorController::class)->group(function () {
