@@ -1,0 +1,88 @@
+{
+  "actions": "Actions",
+  "jwt-tokens": {
+    "id": "ID",
+    "user_id": "User ID",
+    "token": "Token",
+    "created_at": "Created At",
+    "expires_at": "Expires At"
+  },
+
+  "appointments": {
+    "id": "ID",
+    "patient_dni": "Patient DNI",
+    "doctor_dni": "Doctor DNI",
+    "status_id": "Status",
+    "hour": "Hour",
+    "date": "Date",
+    "forms": {
+
+    }
+  },
+
+  "departments": {
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "created_at": "Created At",
+    "updated_at": "Updated At"
+  },
+
+  "doctors": {
+    "id": "ID",
+    "doctor_dni": "Doctor DNI",
+    "specialization_id": "Specialization",
+    "department_id": "Department",
+    "availability": "Availability",
+    "status_id": "Status"
+  },
+
+  "inventories": {
+    "id": "ID",
+    "supplier_id": "Supplier ID",
+    "item_name": "Item",
+    "description": "Description",
+    "quantity": "Quantity",
+    "expiration_date": "Expiration Date",
+    "created_at": "Created At",
+    "updated_at": "Updated At"
+  },
+  
+  "invoices": {
+    "id": "ID",
+    "amount": "Amount",
+    "updated_at": "Updated At",
+    "created_at": "Created At",
+    "paid_at": "Paid At"
+  },
+
+  "medical-records": {
+    "id": "ID",
+    "patient_dni": "Patient DNI",
+    "details": "Details",
+    "created_at": "Created At",
+    "updated_at": "Updated At"
+  },
+
+  "roles": {
+    "id": "ID",
+    "name": "Name",
+    "created_at": "Created At"
+  },
+
+  "suppliers": {
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "address": "Address",
+    "created_at": "Created At",
+    "updated_at": "Updated At"
+  },
+
+  "treatments": {
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "created_at": "Created At"
+  }
+}

@@ -1,7 +1,12 @@
 {
   "welcome": "Welcome",
+  "actions": "Actions",
   "login": {
     "title": "Login",
     "button": "Login"
-  }
+  },
+  "options": "Options",
+  "toggleAll": "Toggle All",
+  "page": "Page",
+  "of": "of"
 }

@@ -3,5 +3,9 @@
   "login": {
     "title": "Iniciar sesión.",
     "button": "Iniciar sesión."
-  }
+  },
+  "options": "Opciones",
+  "toggleAll": "Mostrar todo",
+  "page": "Página",
+  "of": "de"
 }
