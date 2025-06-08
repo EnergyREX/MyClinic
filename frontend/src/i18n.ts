@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({ 
     fallbackLng: 'en',
-    ns: ['common', 'navigation'],
+    ns: ['common', 'navigation', 'columndefs'],
     defaultNS: 'common',
     debug: false,
     interpolation: {
@@ -22,3 +22,5 @@ i18n
       useSuspense: false,
     }
   })
+
+export default i18n
