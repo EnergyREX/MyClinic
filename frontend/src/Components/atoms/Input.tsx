@@ -1,6 +1,10 @@
 import React from 'react'
 
-const Input = ({ className, ...props }) => {
+interface props extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string,
+}
+
+const Input = ({ className, ...props }: props) => {
 
   const styles: string = "border-1 p-1 rounded-md"
 

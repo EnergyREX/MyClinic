@@ -2,30 +2,25 @@ import React, { InputHTMLAttributes, ReactNode } from 'react'
 
 // The value for the checkbox.
 // Children for 
-interface props extends InputHTMLAttributes<HTMLInputElement> {
-  name: string;            // name del input (y también usado como id)
-  val: string;             // value del checkbox
-  hasLabel: boolean;       // si el checkbox tiene una etiqueta asociada
-  children?: ReactNode;    // contenido de la etiqueta, opcional si hasLabel = false
-  size?: 'sm' | 'lg' | 'xl'; // tamaño opcional con valores predefinidos
+interface props extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string
 }
 
-const Checkbox = ({name, val, hasLabel, children}: props) => {
-  
+const Checkbox = ({label, ...props}: props) => {
 
-  
+  const classes: string = "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-lg focus:ring-blue-500"
 
   // Depending on if it has got a label (usually will have.)
-  return hasLabel ? 
+  return label ? 
   (
     <>
-    <input type='checkbox' id={name} name={name} value={val}></input>
-    <label htmlFor={name}>{children}</label>
+    <input className={`${classes}`} type='checkbox' {...props}></input>
+    <label>{label}</label>
     </>
   ) :
   (
     <>
-    <input type='checkbox' id={name} name={name} value={val}></input>
+    <input className={`${classes}`} type='checkbox' {...props}></input>
     </>
   )
 }
