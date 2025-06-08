@@ -1,3 +1,7 @@
+// This custom hook function is to ask about the data to the server.
+// If credentials are correct, it will collect successfully all data, else
+// will ask the user to login again.
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -65,6 +69,19 @@ export function useCrudData() {
       .then(setData);
   }
 
+  // Function to reload an set again the data.
+  async function reloadData() {
+    setIsLoadingData(true)
+    try {
+      await Promise.all([
+      getData(getDataURL)
+    ]);
+    } finally {
+      setIsLoadingData(false)
+    }
+
+  }
+
   // Function getHeaders (from table)
   function getHeaders() {
     return {
@@ -93,7 +110,7 @@ export function useCrudData() {
 
   return {
     info, getInfoURL,
-    data, setData, getDataURL,
+    data, setData, getDataURL, reloadData,
     columns, getColumnsURL,
     isLoadingData,
   };

@@ -44,7 +44,7 @@ const useUserData = create<State>((set, get) => ({
       const permissions = data.permissions || []
 
       if (response.status === 401) {
-        localStorage.clear()
+        localStorage.removeItem('token')
         redirect('/login')
       }
 
