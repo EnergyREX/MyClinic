@@ -12,16 +12,14 @@ import Link from '../molecules/Link'
 const Sidenav = () => {
 
   return (
-    <nav className='h-dvh flex flex-col bg-neutral-900 px-2'>
-      <SidenavHeader>
-        <RouterLink to={"/"}>
-        <Typography variant='h1'>MyClinic</Typography>
-        <Divider />
-        </RouterLink>
-      </SidenavHeader>
+    <nav className='col-span-2 h-dvh flex flex-col bg-neutral-900 px-2'>
+      <SidenavHeader />
+    
+      <Divider className='my-4'/>
 
       <SidenavBody />
 
+      <Divider />
 
       <SidenavFooter>
         <Typography variant='h3'>Username</Typography>
