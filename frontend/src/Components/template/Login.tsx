@@ -47,7 +47,7 @@ const Register = () => {
   })
 
   return (
-    <Layout className='flex align-center justify-center' title='Register - MyClinic'>
+    <main className='flex align-center justify-center' title='Register - MyClinic'>
 
     <form className='flex flex-col' onSubmit={onSubmit}>
       <label>Email</label>
@@ -61,7 +61,7 @@ const Register = () => {
       <Button type='submit' size='lg' variant='primary' onClick={onSubmit}>Submit</Button>
     </form>
 
-    </Layout>
+    </main>
   )
 }
 

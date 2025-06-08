@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Permission from '../Components/atoms/Permission';
 import useUserData from '../hooks/useUserData';
 import Sidenav from '../Components/organisms/Sidenav';
+import Layout from '../Layouts/Layout';
 
 const Home = () => {
 
@@ -17,13 +18,17 @@ const Home = () => {
   }
 
   return (
-    <div className='overflow-x-hidden dark:bg-neutral-800 dark:text-neutral-50 min-h-dvh'>
-      <h1 className='text-4xl font-bold'>MyClinic - Frontend</h1>
-      <p className='text-neutral-500'>Nashe</p>
-
+    <Layout>
+      <div>
       <Sidenav />
+      </div>
+
+      <div className='col-start-2 col-span-full'>
 
       <Button size='xl' type='button' variant='danger' onClick={sendReq}>Test</Button>
+
+      <h1 className='text-4xl font-bold'>MyClinic - Frontend</h1>
+      <p className='text-neutral-500'>Nashe</p>
 
         <Link to="/register">
           <Button size='xl' type='button' variant='primary'>Register</Button> 
@@ -49,8 +54,8 @@ const Home = () => {
         </Link>
 
         <p>Conectado a: {apiURL}</p>
-
-    </div>
+        </div>
+    </Layout>
   );
 };
 
