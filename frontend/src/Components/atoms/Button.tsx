@@ -3,7 +3,11 @@ import React, { ReactNode } from 'react'
 interface props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode, // for the plain text inside the button.
   size: 'sm' | 'lg' | 'xl', // stablishes the size of the button.
-  variant: 'primary' | 'secondary' | 'danger' | 'danger-secondary' | 'sucess' | 'sucess-secondary' | 'neutral' | 'neutral-secondary', // one of the presetted styles.
+  variant: 'primary' | 'secondary' | 
+           'danger' | 'danger-secondary' | 
+           'success' | 'sucess-secondary' | 
+           'neutral' | 'neutral-secondary' | 
+           'text' // one of the presetted styles.
   disabled?: boolean
 }
 
@@ -18,8 +22,9 @@ export const Button = ({ children, size, variant, className, disabled, ...props 
       dangerSecondary: "border-2 border-red-500 bg-red-500/70 dark:border-red-700 dark:bg-red-700/30 dark:text-white m-0.5",
       success: "bg-green-500 dark:bg-green-700 dark:text-white m-0.5",
       successSecondary: "border-2 border-green-500 bg-green-500/70 dark:border-green-700 dark:bg-green-700/30 dark:text-white m-0.5",
-      neutral: "bg-neutral-500 text-neutral-900 dark:bg-neutral-200 dark:text-neutral-50 font-medium dark:text-white m-0.5",
-      neutralSecondary: "border-2 border-neutral-500 bg-neutral-200/70 dark:border-neutral-200 dark:bg-neutral-200/70 dark:text-neutral-900 font-medium dark:text-white m-0.5"
+      neutral: "bg-neutral-500 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50 font-medium dark:text-white m-0.5",
+      neutralSecondary: "border-2 border-neutral-500 bg-neutral-200/70 dark:border-neutral-200 dark:bg-neutral-200/70 dark:text-neutral-900 font-medium dark:text-white m-0.5",
+      text: "hover:bg-neutral-500 py-1 border-neutral-500 justify-start"
     }
 
     // sm, lg, xl
@@ -40,6 +45,7 @@ export const Button = ({ children, size, variant, className, disabled, ...props 
         case "success-secondary": return classes.successSecondary;
         case "neutral": return classes.neutral;
         case "neutral-secondary": return classes.neutralSecondary;
+        case "text": return classes.text
         default: return classes.primary;
       }
     }
