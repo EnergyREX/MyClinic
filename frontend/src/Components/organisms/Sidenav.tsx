@@ -12,7 +12,7 @@ import Link from '../molecules/Link'
 const Sidenav = () => {
 
   return (
-    <nav className='col-span-2 h-dvh flex flex-col bg-neutral-900 px-2'>
+    <nav className='col-span-2 text-neutral-950 bg-neutral-300 h-dvh flex flex-col dark:bg-neutral-900 px-2 dark:text-white'>
       <SidenavHeader />
     
       <Divider className='my-4'/>
