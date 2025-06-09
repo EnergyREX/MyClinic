@@ -12,7 +12,7 @@ const DataTableToolbar = ({ table, globalFilter, setGlobalFilter, openCreate, op
   const { t } = useTranslation('common')
   
   return (
-    <div className='flex justify-between bg-neutral-800 p-3 rounded-lg gap-4 my-3'>
+    <div className='flex justify-between bg-neutral-300 dark:bg-neutral-800 p-3 rounded-lg gap-4 my-3'>
       {/* Global filter */}
       <Input
         type='text'
