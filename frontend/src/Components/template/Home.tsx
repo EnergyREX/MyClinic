@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Button } from '../Components/atoms/Button';
+import { Button } from '../atoms/Button';
 import { Link } from 'react-router-dom';
-import Permission from '../Components/atoms/Permission';
-import useUserData from '../hooks/useUserData';
-import Sidenav from '../Components/organisms/Sidenav';
+import Permission from '../auth/Permission'
+import useUserData from '../../hooks/useUserData';
+import Sidenav from '../organisms/Sidenav';
 import Layout from '../Layouts/Layout';
 
 const Home = () => {

@@ -1,14 +1,12 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom';
-import Home from './template/Home.tsx';
-import Register from './template/Register';
-import Login from './template/Login';
-import NotFound from './template/NotFound.tsx';
+import Home from './Components/template/Home.tsx';
+import Register from './Components/template/Register';
+import Login from './Components/template/Login';
+import NotFound from './Components/template/NotFound.tsx';
 import ProtectedRoute from './Components/auth/ProtectedRoute.tsx';
 import ProtectedRoutes from './Components/auth/ProtectedRoutes.tsx';
-import CrudPage from './template/CrudPage.tsx';
-import CrudCard from './template/CrudCard.tsx';
 import useUserData from './hooks/useUserData.tsx';
 import Departments from './pages/Departments/Departments.tsx';
 import Appointments from './pages/Appointments/Appointments.tsx';

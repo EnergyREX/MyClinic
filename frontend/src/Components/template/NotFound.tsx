@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ErrorLayout from '../Layouts/ErrorLayout'
-import { Button } from '../Components/atoms/Button'
-import Typography from '../Components/atoms/Typography'
+import { Button } from '../atoms/Button'
+import Typography from '../atoms/Typography'
 
 const NotFound = () => {
   return (
