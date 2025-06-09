@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import CrudPage from '../../Components/template/CrudPage'
+import CrudCard from '../../Components/template/CrudCard'
 import { useTranslation } from 'react-i18next';
 import fields from './formFields';
 
@@ -39,7 +39,7 @@ const columns = useMemo(() => [
 
 
   return (
-    <CrudPage 
+    <CrudCard 
     columns={columns}
     formFields={fields}
     />

@@ -23,8 +23,9 @@ import { useTranslation } from 'react-i18next'
 import Dropdown, { DropdownBtn } from '../molecules/Dropdown'
 import { Pencil, Trash } from 'lucide-react'
 import DynamicForm from '../organisms/DynamicForm'
+import Cards from '../organisms/Cards'
 
-const CrudPage = ({ columns, formFields }) => {
+const CrudCard = ({ columns, formFields }) => {
   const { t } = useTranslation('columndefs')
 
   const [isOpenCreateModal, setIsOpenCreateModal] = useState(false)
@@ -264,7 +265,7 @@ const CrudPage = ({ columns, formFields }) => {
           </div>
         </Modal>
 
-        <DataTable
+        <Cards
           table={table}
           openCreate={createModal}
           openDelete={deleteManyModal}
@@ -275,4 +276,4 @@ const CrudPage = ({ columns, formFields }) => {
   )
 }
 
-export default CrudPage
+export default CrudCard

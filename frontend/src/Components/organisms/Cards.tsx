@@ -5,21 +5,24 @@ import DataTableHeader from '../molecules/DataTableHeader'
 import DataTableBody from '../molecules/DataTableBody'
 import Pagination from '../molecules/Pagination'
 import DataTableToolbar from '../molecules/DataTableToolbar'
+import CardsBody from '../molecules/CardsBody'
 
-const Cards = ({ table }) => {
+const Cards = ({ table, openCreate, openDelete, reload }) => {
   
   
   return (
     <>
       <DataTableToolbar 
+      openCreate={openCreate}
+      openDelete={openDelete}
+      reload={reload}
       table={table} 
       globalFilter={table.globalFilter} 
       setGlobalFilter={table.setGlobalFilter} 
       />
-    <table>
-      <DataTableHeader table={table} />
-      <DataTableBody table={table} />
-    </table>
+
+      <CardsBody table={table} />
+
       <Pagination table={table} />
     </>
   )
