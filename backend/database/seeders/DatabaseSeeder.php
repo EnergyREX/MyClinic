@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
         }
 
         $permissions = [
+            'view_dashboard',
+            'view_profile',
+
             'view_departments',
             'view_single_department',
             'create_departments',
