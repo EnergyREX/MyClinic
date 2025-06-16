@@ -8,5 +8,7 @@
   "options": "Options",
   "toggleAll": "Toggle All",
   "page": "Page",
-  "of": "of"
+  "of": "of",
+  "account": "Account",
+  "logout": "Logout"
 }

@@ -7,5 +7,7 @@
   "options": "Opciones",
   "toggleAll": "Mostrar todo",
   "page": "Página",
-  "of": "de"
+  "of": "de",
+  "account": "Cuenta",
+  "logout": "Cerrar sesión"
 }
