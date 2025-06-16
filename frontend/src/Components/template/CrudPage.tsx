@@ -114,10 +114,10 @@ const CrudPage = ({ columns, formFields }) => {
         body: JSON.stringify(formData),
       })
 
-      if (!response.ok) throw new Error("Error al crear el departamento")
+      if (!response.ok) throw new Error("Error al crear")
 
       await response.json()
-      console.log("Departamento creado")
+      console.log("Creado")
       setIsOpenCreateModal(false)
       reloadData()
     } catch (error) {
@@ -137,10 +137,10 @@ const CrudPage = ({ columns, formFields }) => {
         body: JSON.stringify(formData),
       })
 
-      if (!response.ok) throw new Error("Error al actualizar el departamento")
+      if (!response.ok) throw new Error("Error al actualizar")
 
       await response.json()
-      console.log("Departamento actualizado")
+      console.log("Actualizado")
       setIsOpenUpdateModal(false)
       reloadData()
     } catch (error) {
@@ -159,10 +159,10 @@ const CrudPage = ({ columns, formFields }) => {
         }
       })
 
-      if (!response.ok) throw new Error("Error al eliminar el departamento")
+      if (!response.ok) throw new Error("Error al eliminar")
 
       await response.json()
-      console.log("Departamento eliminado")
+      console.log("Eliminado")
       setIsOpenDeleteModal(false)
       reloadData()
     } catch (error) {
@@ -208,17 +208,18 @@ const CrudPage = ({ columns, formFields }) => {
         <Modal isOpen={isOpenCreateModal} onClose={() => setIsOpenCreateModal(false)}>
           <Typography variant='h3'>Crear nuevo registro</Typography>
           <Typography variant='muted'>Completa los campos para crear.</Typography>
-          <Divider />
+          <Divider className='mb-2 mt-2' />
 
           <DynamicForm
+            formId='create-form'
             formFields={formFields}
             onSubmit={handleCreate}
           />
 
-          <Divider />
+          
           <div className='flex justify-end pt-2'>
-            {/* El botón ya está incluido en DynamicForm, pero si quieres uno separado: */}
             <Button variant='neutral' size='lg' onClick={() => setIsOpenCreateModal(false)}>Cancelar</Button>
+            <Button variant='success' size='lg' form='create-form'>Submit</Button>
           </div>
         </Modal>
 
@@ -229,13 +230,14 @@ const CrudPage = ({ columns, formFields }) => {
           <Divider />
 
           <DynamicForm
+            formId='update-form'
             formFields={formFields}
             onSubmit={handleUpdate}
             defaultValues={selectedRow}
           />
 
-          <Divider />
           <div className='flex justify-end pt-2'>
+            <Button variant='primary' size='lg' form='update-form'>Update</Button>
             <Button variant='neutral' size='lg' onClick={() => setIsOpenUpdateModal(false)}>Cancelar</Button>
           </div>
         </Modal>
