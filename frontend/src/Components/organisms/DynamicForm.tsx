@@ -7,9 +7,10 @@ interface Props extends React.FormHTMLAttributes<HTMLFormElement> {
   formFields: FieldDef[];
   onSubmit: (data: any) => void;
   defaultValues?: Record<string, any>;
+  formId?: string;
 }
 
-const DynamicForm: React.FC<Props> = ({ formFields, onSubmit, defaultValues = {} }) => {
+const DynamicForm: React.FC<Props> = ({ formFields, formId, onSubmit, defaultValues = {} }) => {
   const {
     register,
     handleSubmit,
@@ -19,7 +20,7 @@ const DynamicForm: React.FC<Props> = ({ formFields, onSubmit, defaultValues = {}
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form id={formId} onSubmit={handleSubmit(onSubmit)}>
       {formFields.map((field) => (
         <div key={field.name} className="flex flex-col mb-4">
           <label htmlFor={field.name} className="mb-1 font-medium">
@@ -40,13 +41,6 @@ const DynamicForm: React.FC<Props> = ({ formFields, onSubmit, defaultValues = {}
           )}
         </div>
       ))}
-
-      <button
-        type="submit"
-        className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700"
-      >
-        Guardar
-      </button>
     </form>
   );
 };
