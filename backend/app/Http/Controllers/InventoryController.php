@@ -12,8 +12,11 @@ class InventoryController extends Controller
         // Guardar estado.
         function store(Request $request) {
             $validated = $request->validate([
-                'name' => ['string', 'required', 'max:255'],
-                'description' => ['string'],
+                'supplier_id' => ['integer', 'required'],
+                'item_name' => ['string', 'required', 'max:255'],
+                'description' => ['string', 'max:255'],
+                'quantity' => ['integer', 'required'],
+                'expiration_date' => ['date', 'required'],
             ]);
     
             $status = Inventory::create($validated);
