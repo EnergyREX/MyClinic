@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { Button } from '../atoms/Button';
+import { Button } from '../Components/atoms/Button';
 import { Link } from 'react-router-dom';
-import Permission from '../auth/Permission'
-import useUserData from '../../hooks/useUserData';
-import Sidenav from '../organisms/Sidenav';
-import Layout from '../Layouts/Layout';
+import Permission from '../Components/auth/Permission'
+import useUserData from '../hooks/useUserData';
+import Sidenav from '../Components/organisms/Sidenav';
+import Layout from '../Components/Layouts/Layout';
 
 const Home = () => {
 
