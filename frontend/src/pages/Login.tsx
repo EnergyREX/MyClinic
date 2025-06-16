@@ -2,13 +2,13 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
 import { useStore } from 'zustand';
-import { Button } from '../atoms/Button'
-import Input from '../atoms/Input';
-import Label from '../atoms/Label';
-import Layout from '../Layouts/Layout'
-import useUserData from '../../hooks/useUserData';
+import { Button } from '../Components/atoms/Button'
+import Input from '../Components/atoms/Input';
+import Label from '../Components/atoms/Label';
+import Layout from '../Components/Layouts/Layout'
+import useUserData from '../hooks/useUserData';
 
-const Register = () => {
+const Login = () => {
  const { permissions, addPermission, clearPermissions } = useUserData();
  const navigate = useNavigate()
   const { register, handleSubmit, 
@@ -65,4 +65,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Login

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { Navigate } from 'react-router-dom'
-import { Button } from '../atoms/Button'
-import Input from '../atoms/Input';
-import Label from '../atoms/Label';
-import Layout from '../Layouts/Layout'
+import { Button } from '../Components/atoms/Button'
+import Input from '../Components/atoms/Input';
+import Label from '../Components/atoms/Label';
+import Layout from '../Components/Layouts/Layout'
 
 const Register = () => {
 
