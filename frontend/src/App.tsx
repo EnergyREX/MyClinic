@@ -1,9 +1,7 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom';
-import Home from './Components/template/Home.tsx';
-import Register from './Components/template/Register';
-import Login from './Components/template/Login';
+import Home from './pages/Home.tsx';
 import NotFound from './Components/template/NotFound.tsx';
 import ProtectedRoute from './Components/auth/ProtectedRoute.tsx';
 import ProtectedRoutes from './Components/auth/ProtectedRoutes.tsx';
@@ -16,6 +14,9 @@ import MedicalRecords from './pages/MedicalRecords/MedicalRecords.tsx';
 import Suppliers from './pages/Suppliers/Suppliers.tsx';
 import Treatments from './pages/Treatments/Treatments.tsx';
 import JWTTokens from './pages/JWTTokens/JWTTokens.tsx';
+import Register from './pages/Register.tsx';
+import Login from './pages/Login.tsx';
+import Account from './pages/Account.tsx';
 
 const App = () => {
   const { permissions, recoverPermissions, clearPermissions } = useUserData()
@@ -47,7 +48,7 @@ const App = () => {
           <Route path='/medical-records' element={<MedicalRecords />}/>
           <Route path='/suppliers' element={<Suppliers />}/>
           <Route path='/treatments' element={<Treatments />}/>
-          
+          <Route path='/profile' element={<Account />}/>
         </Route>
       </Routes>
     </BrowserRouter>
