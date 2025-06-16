@@ -24,20 +24,12 @@ const SidenavBody = () => {
           <Warehouse />
         </Link>
 
-        <Link to="/invoices" label={t('navigation.invoices')}>
-          <CreditCard />
-        </Link>
-
-        <Link to="/access-tokens" label={t('navigation.access-tokens')}>
+        <Link to="/jwt-tokens" label={t('navigation.access-tokens')}>
           <TicketCheck />
         </Link>
 
         <Link to="/medical-records" label={t('navigation.medical-records')}>
           <NotepadText />
-        </Link>
-
-        <Link to="/roles" label={t('navigation.roles')}>
-          <Book />
         </Link>
 
         <Link to="/suppliers" label={t('navigation.suppliers')}>
