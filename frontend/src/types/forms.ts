@@ -1,4 +1,4 @@
-export type FieldType = "text" | "textarea" | "email" | "number" | "password" | "select" | "checkbox";
+export type FieldType = "text" | "textarea" | "email" | "number" | "password" | "select" | "checkbox" | "date" | "time";
 
 export interface FieldDef {
   name: string;
