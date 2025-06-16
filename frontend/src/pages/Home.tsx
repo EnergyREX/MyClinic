@@ -19,11 +19,11 @@ const Home = () => {
 
   return (
     <Layout>
-      <div>
+      <div className='col-start-1 col-span-2'>
       <Sidenav />
       </div>
 
-      <div className='col-start-2 col-span-full'>
+      <div className='col-start-3 col-span-full'>
 
       <Button size='xl' type='button' variant='danger' onClick={sendReq}>Test</Button>
 
