@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
       Route::get('/permissions', 'permissions')->name('permissions'); // Get the permissions (using to recover)
     });
 
+    // Departments routes
     Route::prefix('departments')->middleware('auth:api')->controller(DepartmentController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:view_departments');
       Route::get('/info', 'info')->middleware('permission:view_departments');
@@ -46,6 +47,7 @@ use Illuminate\Support\Facades\Route;
       Route::delete('/', 'destroyMany')->middleware('permission:delete_departments');
     });
 
+    // Doctor routes
     Route::prefix('doctors')->middleware('auth:api')->controller(DoctorController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:view_doctors');
       Route::get('/{id}', 'find')->middleware('permission:view_single_doctor');
@@ -80,6 +82,7 @@ use Illuminate\Support\Facades\Route;
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_role');
     });
 
+    // Inventories routes
     Route::prefix('inventories')->middleware('auth:api')->controller(InventoryController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:view_inventories');
       Route::get('/{id}', 'find')->middleware('permission:view_single_item');
@@ -88,6 +91,7 @@ use Illuminate\Support\Facades\Route;
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_inventory');
     });
 
+    // Suppliers routes
     Route::prefix('suppliers')->middleware('auth:api')->controller(SupplierController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:view_suppliers');
       Route::get('/{id}', 'find')->middleware('permission:view_single_suppliers');
@@ -96,6 +100,7 @@ use Illuminate\Support\Facades\Route;
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_suppliers');
     });
 
+    // Invoices routes
     Route::prefix('invoices')->middleware('auth:api')->controller(InvoiceController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:view_invoices');
       Route::get('/{id}', 'find')->middleware('permission:view_single_invoices');
@@ -104,6 +109,7 @@ use Illuminate\Support\Facades\Route;
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_invoices');
     });
 
+    // Treatments routes
     Route::prefix('treatments')->middleware('auth:api')->controller(TreatmentController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:view_treatments');
       Route::get('/{id}', 'find')->middleware('permission:view_single_treatments');
@@ -112,6 +118,7 @@ use Illuminate\Support\Facades\Route;
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_treatments');
     });
 
+    // Medical Records routes
     Route::prefix('medical-records')->middleware('auth:api')->controller(MedicalRecordController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:view_records');
       Route::get('/{id}', 'find')->middleware('permission:view_single_records');
