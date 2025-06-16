@@ -32,13 +32,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rutas públicas */}
-        
+        {/* Public routes */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
 
-        {/* Rutas protegidas solo para usuarios logueados */}
+        {/* Protected routes for only logged in users */}
         <Route element={<ProtectedRoutes />}>
         <Route path="/" element={<ProtectedRoute permission='view_dashboard'><Home /></ProtectedRoute>} />
         <Route path="/jwt-tokens" element={<ProtectedRoute permission="view_jwttokens"><JWTTokens /></ProtectedRoute>} />
