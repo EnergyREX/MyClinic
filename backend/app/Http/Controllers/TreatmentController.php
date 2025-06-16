@@ -11,10 +11,10 @@ class TreatmentController extends Controller
     function store(Request $request) {
         $validated = $request->validate([
             'name' => ['string', 'required', 'max:255'],
-            'description' => ['string']
+            'description' => ['string', 'required']
         ]);
 
-        $treatment = Treatment::create($validated);
+        Treatment::create($validated);
 
         return response()->json([
             'success' => true,
