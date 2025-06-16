@@ -15,7 +15,7 @@ class AppointmentService {
     $appointment = Appointment::create([
       'patient_dni' => $validated['patient_dni'],
       'doctor_dni' => $validated['doctor_dni'],
-      'status' => $validated['status'],
+      'status_id' => $validated['status_id'],
       'hour' => $validated['hour'],
       'date' => $validated['date'],
     ]);
