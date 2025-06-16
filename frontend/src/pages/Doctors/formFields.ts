@@ -3,17 +3,35 @@ import { FieldDef } from "../../types/forms";
 
 export const fields: FieldDef[] = [
   {
-    name: "name",
-    label: i18n.t("appointments.name"),
+    name: "doctor_dni",
+    label: i18n.t("doctors.doctor_dni", {ns: "columndefs"}),
     type: "text",
     required: true,
   },
   {
-    name: "description",
-    label: i18n.t("appointments.description"),
-    type: "textarea",
+    name: "specialization_id",
+    label: i18n.t("doctors.specialization_id", {ns: "columndefs"}),
+    type: "number",
     required: true,
   },
+  {
+    name: "department_id",
+    label: i18n.t("doctors.department_id", {ns: "columndefs"}),
+    type: "number",
+    required: true,
+  },
+  {
+    name: "availability",
+    label: i18n.t("doctors.availability", {ns: "columndefs"}),
+    type: "date",
+    required: true,
+  },
+  {
+    name: "status_id",
+    label: i18n.t("doctors.status_id", {ns: "columndefs"}),
+    type: "textarea",
+    required: true,
+  }
 ];
 
 export default fields

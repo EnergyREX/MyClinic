@@ -4,71 +4,86 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Doctor;
+use Illuminate\Http\JsonResponse;
 
 class DoctorController extends Controller
 {
-    // Crud básico para crear un distribuidor
+    // CRUD operations for Doctor model
 
-        // Guardar estado.
-        function store(Request $request) {
-            $validated = $request->validate([
-                'name' => ['string', 'required', 'max:255'],
-                'description' => ['string'],
-            ]);
-    
-            $status = Doctor::create($validated);
-    
-            return response()->json([
-                'success' => true,
-                'message' => "Status created",
-                'data' => $status
-            ], 200);
-        }
-    
-        // Mostrar todos los estados.
-        function index() {
-            $status = Doctor::all();
-            return response()->json([
-                'success' => true,
-                'data' => $status
-            ]);
-        }
-    
-        // Mostrar un estado por id.
-        function find($id) {
-            $status = Doctor::findOrFail($id);
-            return response()->json([
-                'success' => true,
-                'data' => $status
-            ]);
-        }
-    
-        // Editar un estado
-        function update($id, Request $request) {
-            $status = Doctor::findOrFail($id);
-    
-            $validated = $request->validate([
-                'name' => ['string', 'required', 'max:255'],
-                'description' => ['string']
-            ]);
-    
-            $status->fill($validated);
-            $status->save();
-    
-            return response()->json([
-                'success' => true,
-                'message' => 'Status updated'
-            ], 200);
-        }
-    
-        // Eliminar un estado
-        function destroy($id) {
-            $status = Doctor::findOrFail($id);
-            $status->delete();
-    
-            return response()->json([
-                'success' => true,
-                'message' => "Status eliminated"
-            ]);
-        }
+    // Show all doctors
+    public function index(): JsonResponse
+    {
+        $doctors = Doctor::all();
+
+        return response()->json([
+            'success' => true,
+            'data' => $doctors
+        ]);
+    }
+
+    // Show a doctor by ID
+    public function show(int $id): JsonResponse
+    {
+        $doctor = Doctor::findOrFail($id);
+
+        return response()->json([
+            'success' => true,
+            'data' => $doctor
+        ]);
+    }
+
+    // Create a new doctor
+    public function store(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'doctor_dni' => ['required', 'string', 'max:255'],
+            'specialization_id' => ['nullable', 'integer', 'exists:specializations,id'],
+            'department_id' => ['nullable', 'integer', 'exists:departments,id'],
+            'availability' => ['required'],
+            'status_id' => ['required', 'integer', 'exists:statuses,id'],
+        ]);
+
+        $doctor = Doctor::create($validated);
+
+        return response()->json([
+            'success' => true,
+            'message' => "Doctor created successfully",
+            'data' => $doctor
+        ], 201);
+    }
+
+    // Update an existing doctor by ID
+    public function update(Request $request, int $id): JsonResponse
+    {
+        $doctor = Doctor::findOrFail($id);
+
+        $validated = $request->validate([
+            'doctor_dni' => ['sometimes', 'string', 'max:255'],
+            'specialization_id' => ['sometimes', 'integer', 'exists:specializations,id'],
+            'department_id' => ['sometimes', 'integer', 'exists:departments,id'],
+            'availability' => ['sometimes', 'boolean'],
+            'status_id' => ['sometimes', 'integer', 'exists:statuses,id'],
+        ]);
+
+        $doctor->fill($validated);
+        $doctor->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Doctor updated successfully',
+            'data' => $doctor
+        ], 200);
+    }
+
+    // Delete a doctor by ID
+    public function destroy(int $id): JsonResponse
+    {
+        $doctor = Doctor::findOrFail($id);
+        $doctor->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => "Doctor deleted successfully"
+        ], 200);
+    }
 }

@@ -35,7 +35,7 @@ const columns = useMemo(() => [
   { id: 'doctor_dni', header: t('doctors.doctor_dni'), accessorKey: 'doctor_dni' },
   { id: 'specialization_id', header: t('doctors.specialization_id'), accessorKey: 'specialization_id' },
   { id: 'department_id', header: t('doctors.department_id'), accessorKey: 'department_id' },
-  { id: 'availability', header: t('doctors.availability'), accessorKey: 'updated_at' },
+  { id: 'availability', header: t('doctors.availability'), accessorKey: 'availability' },
   { id: 'status_id', header: t('doctors.status_id'), accessorKey: 'status_id' },
 ], [t])
 
