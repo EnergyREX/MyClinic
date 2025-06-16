@@ -7,6 +7,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\JwtTokenController;
+use App\Http\Controllers\MedicalRecordController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TreatmentController;
@@ -64,11 +65,13 @@ use Illuminate\Support\Facades\Route;
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_appointment');
     });
 
+    // JWT Token Routes.
     Route::prefix('jwt-tokens')->middleware('auth:api')->controller(JwtTokenController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:get_tokens');
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_token');
     });
 
+    // Role and Permission Routes.
     Route::prefix('roles')->middleware('auth:api')->controller(RoleController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:view_roles');
       Route::get('/{id}', 'find')->middleware('permission:view_single_role');
@@ -109,7 +112,7 @@ use Illuminate\Support\Facades\Route;
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_treatments');
     });
 
-    Route::prefix('medical-records')->middleware('auth:api')->controller(InventoryController::class)->group(function () {
+    Route::prefix('medical-records')->middleware('auth:api')->controller(MedicalRecordController::class)->group(function () {
       Route::get('/', 'index')->middleware('permission:view_records');
       Route::get('/{id}', 'find')->middleware('permission:view_single_records');
       Route::post('/', 'store')->middleware('permission:create_records');
