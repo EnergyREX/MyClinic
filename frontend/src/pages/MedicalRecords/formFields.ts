@@ -3,14 +3,14 @@ import { FieldDef } from "../../types/forms";
 
 export const fields: FieldDef[] = [
   {
-    name: "name",
-    label: i18n.t("appointments.name"),
+    name: "patient_dni",
+    label: i18n.t("medical-records.patient_dni", { ns: "columndefs" }),
     type: "text",
     required: true,
   },
   {
-    name: "description",
-    label: i18n.t("appointments.description"),
+    name: "details",
+    label: i18n.t("medical-records.details", { ns: "columndefs" }),
     type: "textarea",
     required: true,
   },

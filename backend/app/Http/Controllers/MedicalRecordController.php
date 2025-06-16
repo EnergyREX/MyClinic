@@ -12,8 +12,8 @@ class MedicalRecordController extends Controller
         // Guardar estado.
         function store(Request $request) {
             $validated = $request->validate([
-                'name' => ['string', 'required', 'max:255'],
-                'description' => ['string'],
+                'patient_dni' => ['string', 'required', 'max:255'],
+                'details' => ['string'],
             ]);
     
             $status = MedicalRecord::create($validated);
