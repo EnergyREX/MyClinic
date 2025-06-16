@@ -15,9 +15,7 @@
     "status_id": "Status",
     "hour": "Hour",
     "date": "Date",
-    "forms": {
-
-    }
+    "forms": {}
   },
 
   "departments": {
@@ -40,6 +38,7 @@
   "inventories": {
     "id": "ID",
     "supplier_id": "Supplier ID",
+    "supplier": "Supplier",
     "item_name": "Item",
     "description": "Description",
     "quantity": "Quantity",
