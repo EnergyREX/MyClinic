@@ -10,5 +10,13 @@
   "page": "Page",
   "of": "of",
   "account": "Account",
-  "logout": "Logout"
+  "logout": "Logout",
+  "modify": "Modify",
+  "delete": "Delete",
+  "create": "Create",
+  "cancel": "Cancel",
+  "save": "Save",
+  "update": "Update",
+  "search": "Search",
+  "filter": "Filter"
 }

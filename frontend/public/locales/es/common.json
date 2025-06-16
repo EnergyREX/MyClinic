@@ -9,5 +9,13 @@
   "page": "Página",
   "of": "de",
   "account": "Cuenta",
-  "logout": "Cerrar sesión"
+  "logout": "Cerrar sesión",
+  "modify": "Modificar",
+  "delete": "Eliminar",
+  "create": "Crear",
+  "cancel": "Cancel",
+  "save": "Save",
+  "update": "Update",
+  "search": "Search",
+  "filter": "Filter"
 }
