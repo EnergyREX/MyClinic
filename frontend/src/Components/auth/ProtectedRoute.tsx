@@ -4,16 +4,16 @@ import { ReactElement } from 'react'
 
 interface props {
   permission: string
-  element: ReactElement
+  children: ReactElement
 }
 
-const ProtectedRoute = ({permission, element}: props) => {
+const ProtectedRoute = ({permission, children}: props) => {
   const { permissions } = useUserData()
 
   if (!permissions.includes(permission)) {
     return <Navigate to="/login" />
   } else {
-    return <>{element}</>
+    return <>{children}</>
   }
 }
 

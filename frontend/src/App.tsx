@@ -1,11 +1,13 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Home from './pages/Home.tsx';
 import NotFound from './Components/template/NotFound.tsx';
 import ProtectedRoute from './Components/auth/ProtectedRoute.tsx';
 import ProtectedRoutes from './Components/auth/ProtectedRoutes.tsx';
 import useUserData from './hooks/useUserData.tsx';
+
 import Departments from './pages/Departments/Departments.tsx';
 import Appointments from './pages/Appointments/Appointments.tsx';
 import Doctors from './pages/Doctors/Doctors.tsx';
@@ -19,37 +21,35 @@ import Login from './pages/Login.tsx';
 import Account from './pages/Account.tsx';
 
 const App = () => {
-  const { permissions, recoverPermissions, clearPermissions } = useUserData()
+  const { permissions, recoverPermissions } = useUserData();
 
-  
   useEffect(() => {
-    if (permissions.length == 0) {
-        recoverPermissions()
-    } else {
-      console.log(permissions)
+    if (permissions.length === 0) {
+      recoverPermissions();
     }
-  }, []);
-  
+  }, [permissions, recoverPermissions]);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path='*' element={<NotFound />} />
+        {/* Rutas públicas */}
+        
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
 
-        <Route element={<ProtectedRoutes permission='view_roles'/>}>
-          <Route path='/jwt-tokens' element={<JWTTokens />}/>
-          <Route path='/appointments' element={<Appointments />}/>
-          <Route path='/departments' element={<Departments />}/>
-          <Route path='/doctors' element={<Doctors />}/>
-          <Route path='/inventories' element={<Inventories />}/>
-          <Route path='/medical-records' element={<MedicalRecords />}/>
-          <Route path='/suppliers' element={<Suppliers />}/>
-          <Route path='/treatments' element={<Treatments />}/>
-          <Route path='/profile' element={<Account />}/>
-        </Route>
+        {/* Rutas protegidas solo para usuarios logueados */}
+        <Route element={<ProtectedRoutes />}>
+        <Route path="/" element={<ProtectedRoute permission='view_dashboard'><Home /></ProtectedRoute>} />
+        <Route path="/jwt-tokens" element={<ProtectedRoute permission="view_jwttokens"><JWTTokens /></ProtectedRoute>} />
+        <Route path="/appointments" element={<ProtectedRoute permission="view_appointments"><Appointments /></ProtectedRoute>} />
+        <Route path="/departments" element={<ProtectedRoute permission="view_departments"><Departments /></ProtectedRoute>}/>
+        <Route path="/doctors" element={<ProtectedRoute permission='view_doctors'><Doctors /></ProtectedRoute>} />
+        <Route path="/inventories" element={<ProtectedRoute permission="view_inventories"><Inventories /></ProtectedRoute>} />
+        <Route path="/medical-records" element={<ProtectedRoute permission="view_medical_records"><MedicalRecords /></ProtectedRoute>}/>
+        <Route path="/suppliers" element={<ProtectedRoute permission="view_suppliers"><Suppliers /></ProtectedRoute>} />
+        <Route path="/treatments" element={<ProtectedRoute permission="view_treatments"><Treatments /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute permission="view_profile"><Account /></ProtectedRoute>} /></Route>
       </Routes>
     </BrowserRouter>
   );
