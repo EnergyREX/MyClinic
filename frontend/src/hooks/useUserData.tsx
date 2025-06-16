@@ -13,6 +13,7 @@ interface State {
 const useUserData = create<State>((set, get) => ({
   permissions: [],
 
+  // Saves the permission to the state if it doesn't already exist
   addPermission: (perm: string) =>
     set((state) => (
       state.permissions.includes(perm)
@@ -25,7 +26,8 @@ const useUserData = create<State>((set, get) => ({
       permissions: []
     })),
 
-  recoverPermissions: async () => {
+  // Recovers permissions from the backend
+    recoverPermissions: async () => {
     const token = localStorage.getItem('token')
 
     if (token) {

@@ -23,7 +23,7 @@ export function useCrudData() {
   const getInfoURL = `${apiURL}/api${pathname}/info`;
   const getDataURL = `${apiURL}/api${pathname}`;
   const getColumnsURL = `${apiURL}/api${pathname}/columns`;
-
+/*
   // Function getInfo.
   function getInfo(url: string) {
     return fetch(url, {
@@ -33,8 +33,9 @@ export function useCrudData() {
     })
       .then(res => res.json())
       .then(setInfo);
-  }
-
+  } 
+*/      
+/*
   // Function getColumns
   function getColumns(url: string) {
     return fetch(url, {
@@ -50,7 +51,9 @@ export function useCrudData() {
         return res.json();
       })
       .then(setColumns);
-  }
+  } 
+
+*/
 
   // Function getData
   function getData(url: string) {
@@ -95,9 +98,9 @@ export function useCrudData() {
   async function fetchData() {
     try {
       await Promise.all([
-        getInfo(getInfoURL),
+        //getInfo(getInfoURL),
         getData(getDataURL),
-        getColumns(getColumnsURL),
+        //getColumns(getColumnsURL),
       ]);
     } finally {
       setIsLoadingData(false);
