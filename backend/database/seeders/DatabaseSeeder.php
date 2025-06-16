@@ -48,8 +48,8 @@ class DatabaseSeeder extends Seeder
             'update_appointment',
             'delete_appointment',
 
-            'get_tokens',
-            'delete_token',
+            'view_jwttokens',
+            'delete_jwttokens',
 
             'view_roles',
             'view_single_role',
@@ -109,7 +109,9 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'email' => 'admin@myclinic.com',
-            'password' => 'admin'
+            'password' => 'admin',
+            'role_id' => 2
+
         ]);
     }
 }
