@@ -14,7 +14,7 @@ class SupplierController extends Controller
             $validated = $request->validate([
                 'name' => ['string', 'required', 'max:255'],
                 'description' => ['string'],
-                'direction' => ['string', 'required', 'max:255']
+                'address' => ['string', 'required', 'max:255']
             ]);
     
             $supplier = Supplier::create($validated);
