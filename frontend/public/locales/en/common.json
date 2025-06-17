@@ -1,23 +1,43 @@
 {
   "welcome": "Welcome",
+  "welcome-back": "Welcome back",
   "actions": "Actions",
   "app-title": "MyClinic - Clinic Management System",
   "home-title": "Dashboard",
 
   "login": {
     "title": "Login",
-    "button": "Enter"
+    "subtle": "Please log in to continue",
+    "button": "Login"
   },
+
+  "register": {
+    "title": "Register",
+    "subtle": "Please register to continue",
+    "button": "Register",
+
+    "dni": "ID",
+    "name": "First name",
+    "surname": "Last name",
+    "email": "Email",
+    "phone_number": "Phone number",
+    "address": "Address",
+    "password": "Password",
+    "confirm_password": "Confirm password"
+  },
+
+  "already-registered": "Already registered? Log in now.",
+  "register-now": "Don't have an account? Register now.",
 
   "creating-new-registry": {
     "title": "Creating new record",
-    "description": "Please fill out the form below to create a new record.",
+    "description": "Please complete the form below to create a new record.",
     "button": "Create"
   },
 
   "updating-registry": {
     "title": "Updating record",
-    "description": "Please fill out the form below to update the record.",
+    "description": "Please complete the form below to update the record.",
     "button": "Update"
   },
 
@@ -39,7 +59,7 @@
   "page": "Page",
   "of": "of",
   "account": "Account",
-  "logout": "Log out",
+  "logout": "Logout",
   "modify": "Edit",
   "delete": "Delete",
   "create": "Create",
@@ -48,6 +68,8 @@
   "update": "Update",
   "search": "Search",
   "filter": "Filter",
+  "email": "Email",
+  "password": "Password",
 
   "jwt-tokens": {
     "title": "Access tokens",
@@ -78,7 +100,7 @@
     "patient_dni": "Patient ID",
     "doctor_dni": "Doctor ID",
     "status_id": "Status",
-    "hour": "Hour",
+    "hour": "Time",
     "date": "Date",
     "forms": {}
   },

@@ -1,13 +1,33 @@
 {
   "welcome": "Bienvenido",
+  "welcome-back": "Bienvenido de nuevo",
   "actions": "Acciones",
   "app-title": "MyClinic - Sistema de gestión de clínicas",
   "home-title": "Dashboard",
 
   "login": {
     "title": "Iniciar sesión",
-    "button": "Entrar"
+    "subtle": "Por favor, inicie sesión para continuar",
+    "button": "Iniciar sesión"
   },
+
+  "register": {
+    "title": "Registro",
+    "subtle": "Por favor, regístrese para continuar",
+    "button": "Registrarse",
+
+    "dni": "DNI",
+    "name": "Nombre",
+    "surname": "Apellido",
+    "email": "Correo electrónico",
+    "phone_number": "Número de teléfono",
+    "address": "Dirección",
+    "password": "Contraseña",
+    "confirm_password": "Confirmar contraseña"
+  },
+
+  "already-registered": "¿Ya está registrado? Inicie sesión ahora.",
+  "register-now": "¿No tiene una cuenta? Regístrese ahora.",
 
   "creating-new-registry": {
     "title": "Creando nuevo registro",
@@ -48,6 +68,8 @@
   "update": "Actualizar",
   "search": "Buscar",
   "filter": "Filtrar",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
 
   "jwt-tokens": {
     "title": "Tokens de acceso",
