@@ -267,7 +267,7 @@ const CrudPage = ({ columns, formFields, permissions }: props) => {
 
         <Permission requiredPermission={permissions?.delete}>
         {/* Delete Many Modal */}
-        <Modal isOpen={isOpenDeleteManyModal} onClose={() => setIsOpenDeleteModal(false)}>
+        <Modal isOpen={isOpenDeleteManyModal} onClose={() => setIsOpenDeleteManyModal(false)}>
           <Typography variant='h3'>¿Seguro que quieres estos registros?</Typography>
           <Typography variant='muted'>¡Esta acción no se puede deshacer!</Typography>
           <Divider />
