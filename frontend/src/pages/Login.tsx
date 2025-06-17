@@ -1,14 +1,18 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useStore } from 'zustand';
 import { Button } from '../Components/atoms/Button'
-import Input from '../Components/atoms/Input';
-import Label from '../Components/atoms/Label';
-import Layout from '../Components/Layouts/Layout'
+import InputField from '../Components/molecules/InputField';
 import useUserData from '../hooks/useUserData';
+import PageTitle from '../Components/layouts/PageTitle';
+import { useTranslation } from 'react-i18next';
+import AuthLayout from '../Components/layouts/AuthLayout';
+import Typography from '../Components/atoms/Typography';
+import { SquareArrowOutUpRightIcon } from 'lucide-react';
 
 const Login = () => {
+ const { t } = useTranslation(); 
  const { permissions, addPermission, clearPermissions } = useUserData();
  const navigate = useNavigate()
   const { register, handleSubmit, 
@@ -47,21 +51,30 @@ const Login = () => {
   })
 
   return (
-    <main className='flex align-center justify-center' title='Register - MyClinic'>
+    <>
+    <PageTitle>{t('home.title')}</PageTitle>
+    <AuthLayout>
+    <div className='mb-5 mt-5 w-full justify-center items-center text-center'>
+      <Typography variant='h1' className='font-bold'>{t('login.title')}</Typography>
+      <Typography variant='muted' className='text-neutral-500 dark:text-neutral-400'>{t('login.subtle')}</Typography>
+    </div>
+    <div className='bg-neutral-300 p-5 rounded-lg dark:bg-neutral-700 dark:text-white max-w-md w-full'>
 
-    <form className='flex flex-col' onSubmit={onSubmit}>
-      <label>Email</label>
-      <input {...register("email")} type='text'
-      className='border-1 rounded' />
+      <form className='flex flex-col' onSubmit={onSubmit}>
+        
+        <InputField label={t('email')} type="text" 
+        {...register("email")} />
+      
+        <InputField label={t('password')} type="password"
+        {...register("password")} />
 
-      <label>Password</label>
-      <input {...register("password")} type='password'
-      className='border-1 rounded' />
+        <Button type='submit' size='lg' variant='primary' className='mt-2' onClick={onSubmit}>{t('login.button')}</Button>
+      </form>
+    </div>
+      <Link className='font-light pt-2 dark:text-white flex gap-2 hover:text-sky-500 duration-100' to={'/register'}>{t('register-now')} <SquareArrowOutUpRightIcon className='w-[16px]'/></Link>
 
-      <Button type='submit' size='lg' variant='primary' onClick={onSubmit}>Submit</Button>
-    </form>
-
-    </main>
+    </AuthLayout>
+    </>
   )
 }
 
