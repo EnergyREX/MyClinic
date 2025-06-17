@@ -15,7 +15,7 @@ const Link = ({ className, children, label, to, ...props }: props) => {
 
     const classes: Record<string, string> = {
       default: "flex gap-1 align-middle p-1 m-1 rounded-md hover:bg-neutral-700 hover:text-white ease-in duration-100 align-middle",
-      active: "flex gap-1 align-middle p-1 m-1 rounded-md bg-neutral-700 ease-in duration-100",
+      active: "flex gap-1 align-middle p-1 m-1 rounded-md bg-neutral-700 ease-in duration-100 text-white",
     }
 
   function checkIsPage () {
