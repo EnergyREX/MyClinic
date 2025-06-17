@@ -44,7 +44,7 @@ const App = () => {
         <Route path="/appointments" element={<ProtectedRoute permission="view_appointments"><Appointments /></ProtectedRoute>} />
         <Route path="/departments" element={<ProtectedRoute permission="view_departments"><Departments /></ProtectedRoute>}/>
         <Route path="/doctors" element={<ProtectedRoute permission='view_doctors'><Doctors /></ProtectedRoute>} />
-        <Route path="/inventories" element={<ProtectedRoute permission="view_inventories"><Inventories /></ProtectedRoute>} />
+        <Route path="/inventories" element={<ProtectedRoute permission="view_inventory"><Inventories /></ProtectedRoute>} />
         <Route path="/medical-records" element={<ProtectedRoute permission="view_medical_records"><MedicalRecords /></ProtectedRoute>}/>
         <Route path="/suppliers" element={<ProtectedRoute permission="view_suppliers"><Suppliers /></ProtectedRoute>} />
         <Route path="/treatments" element={<ProtectedRoute permission="view_treatments"><Treatments /></ProtectedRoute>} />

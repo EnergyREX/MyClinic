@@ -84,8 +84,8 @@ use Illuminate\Support\Facades\Route;
 
     // Inventories routes
     Route::prefix('inventories')->middleware('auth:api')->controller(InventoryController::class)->group(function () {
-      Route::get('/', 'index')->middleware('permission:view_inventories');
-      Route::get('/{id}', 'find')->middleware('permission:view_single_item');
+      Route::get('/', 'index')->middleware('permission:view_inventory');
+      Route::get('/{id}', 'find')->middleware('permission:view_inventory');
       Route::post('/', 'store')->middleware('permission:create_inventory');
       Route::patch('/{id}', 'update')->middleware('permission:update_inventory');
       Route::delete('/{id}', 'destroy')->middleware('permission:delete_inventory');

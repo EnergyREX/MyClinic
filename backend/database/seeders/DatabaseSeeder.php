@@ -31,7 +31,6 @@ class DatabaseSeeder extends Seeder
             'view_profile',
 
             'view_departments',
-            'view_single_department',
             'create_departments',
             'update_departments',
             'delete_departments',
@@ -43,46 +42,40 @@ class DatabaseSeeder extends Seeder
             'delete_doctors',
 
             'view_appointments',
-            'view_single_appointment',
-            'create_appointment',
-            'update_appointment',
-            'delete_appointment',
+            'create_appointments',
+            'update_appointments',
+            'delete_appointments',
 
             'view_jwttokens',
             'delete_jwttokens',
 
             'view_roles',
-            'view_single_role',
             'create_role',
             'update_role',
             'delete_role',
 
-            'view_inventories',
+            'view_inventory',
             'view_single_item',
             'create_inventory',
             'update_inventory',
             'delete_inventory',
 
             'view_suppliers',
-            'view_single_suppliers',
             'create_suppliers',
             'update_suppliers',
             'delete_suppliers',
 
             'view_invoices',
-            'view_single_invoices',
             'create_invoices',
             'update_invoices',
             'delete_invoices',
 
             'view_treatments',
-            'view_single_treatments',
             'create_treatments',
             'update_treatments',
             'delete_treatments',
 
             'view_records',
-            'view_single_records',
             'create_records',
             'update_records',
             'delete_records',
