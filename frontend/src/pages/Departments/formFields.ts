@@ -1,19 +1,19 @@
 import i18n from '../../i18n'
 import { FieldDef } from "../../types/forms";
 
-export const fields: FieldDef[] = [
+export const getFields = (): FieldDef[] => [
   {
     name: "name",
-    label: i18n.t("departments.name", {ns: "columndefs"}),
+    label: i18n.t("departments.name"),
     type: "text",
     required: true,
   },
   {
     name: "description",
-    label: i18n.t("departments.description", {ns: "columndefs"}),
+    label: i18n.t("departments.description"),
     type: "textarea",
     required: true,
   },
 ];
 
-export default fields
+export default getFields
