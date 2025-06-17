@@ -4,6 +4,7 @@
   "actions": "Acciones",
   "app-title": "MyClinic - Sistema de gestión de clínicas",
   "home-title": "Dashboard",
+  "account-title": "Perfil",
 
   "login": {
     "title": "Iniciar sesión",
