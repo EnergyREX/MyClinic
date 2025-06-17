@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Permission from '../auth/Permission';
 
 const SidenavBody = () => {
-  const { t } = useTranslation('navigation');
+  const { t } = useTranslation('common');
 
   return (
     <div className='flex-grow'>
@@ -21,7 +21,7 @@ const SidenavBody = () => {
         <Link to="/doctors" label={t('navigation.doctors')}><Pill /></Link>
       </Permission>
 
-      <Permission requiredPermission="view_inventories">
+      <Permission requiredPermission="view_inventory">
         <Link to="/inventories" label={t('navigation.inventories')}><Warehouse /></Link>
       </Permission>
 
