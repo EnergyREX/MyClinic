@@ -32,7 +32,7 @@ interface props {
 }
 
 const CrudPage = ({ columns, formFields, permissions }: props) => {
-  const { t } = useTranslation('columndefs')
+  const { t } = useTranslation()
 
   const [isOpenCreateModal, setIsOpenCreateModal] = useState(false)
   const [isOpenUpdateModal, setIsOpenUpdateModal] = useState(false)
@@ -213,8 +213,8 @@ const CrudPage = ({ columns, formFields, permissions }: props) => {
       <div className='col-start-3 col-span-full m-3'>
         {/* Create Modal */}
         <Modal isOpen={isOpenCreateModal} onClose={() => setIsOpenCreateModal(false)}>
-          <Typography variant='h3'>Crear nuevo registro</Typography>
-          <Typography variant='muted'>Completa los campos para crear.</Typography>
+          <Typography variant='h3'>{t('creating-new-registry.title')}</Typography>
+          <Typography variant='muted'>{t('creating-new-registry.description')}</Typography>
           <Divider className='mb-2 mt-2' />
 
           <DynamicForm
@@ -225,16 +225,16 @@ const CrudPage = ({ columns, formFields, permissions }: props) => {
 
           
           <div className='flex justify-end pt-2'>
-            <Button variant='neutral' size='lg' onClick={() => setIsOpenCreateModal(false)}>Cancelar</Button>
-            <Button variant='success' size='lg' form='create-form'>Submit</Button>
+            <Button variant='neutral' size='lg' onClick={() => setIsOpenCreateModal(false)}>{t('cancel')}</Button>
+            <Button variant='success' size='lg' form='create-form'>{t('create')}</Button>
           </div>
         </Modal>
 
         {/* Update Modal */}
         <Permission requiredPermission={permissions?.update}>
         <Modal isOpen={isOpenUpdateModal} onClose={() => setIsOpenUpdateModal(false)}>
-          <Typography variant='h3'>Actualizar registro</Typography>
-          <Typography variant='muted'>Modifica los campos necesarios.</Typography>
+          <Typography variant='h3'>{t('updating-registry.title')}</Typography>
+          <Typography variant='muted'>{t('updating-registry.description')}</Typography>
           <Divider />
 
           <DynamicForm
@@ -245,8 +245,8 @@ const CrudPage = ({ columns, formFields, permissions }: props) => {
           />
 
           <div className='flex justify-end pt-2'>
-            <Button variant='primary' size='lg' form='update-form'>Update</Button>
-            <Button variant='neutral' size='lg' onClick={() => setIsOpenUpdateModal(false)}>Cancelar</Button>
+            <Button variant='primary' size='lg' form='update-form'>{t('update')}</Button>
+            <Button variant='neutral' size='lg' onClick={() => setIsOpenUpdateModal(false)}>{t('cancel')}</Button>
           </div>
         </Modal>
         </Permission>
@@ -254,13 +254,13 @@ const CrudPage = ({ columns, formFields, permissions }: props) => {
         <Permission requiredPermission={permissions?.delete}>
         {/* Delete Modal */}
         <Modal isOpen={isOpenDeleteModal} onClose={() => setIsOpenDeleteModal(false)}>
-          <Typography variant='h3'>¿Seguro que quieres eliminar esto?</Typography>
-          <Typography variant='muted'>Esta acción no se puede deshacer.</Typography>
+          <Typography variant='h3'>{t('deleting-registry.title')}</Typography>
+          <Typography variant='muted'>{t('deleting-registry.description')}</Typography>
           <Divider />
 
           <div className='flex justify-end pt-2'>
-            <Button variant='danger' size='lg' onClick={handleDelete}>Eliminar</Button>
-            <Button variant='neutral' size='lg' onClick={() => setIsOpenDeleteModal(false)}>Cancelar</Button>
+            <Button variant='danger' size='lg' onClick={handleDelete}>{t('delete')}</Button>
+            <Button variant='neutral' size='lg' onClick={() => setIsOpenDeleteModal(false)}>{t('cancel')}</Button>
           </div>
         </Modal>
         </Permission>
@@ -268,13 +268,13 @@ const CrudPage = ({ columns, formFields, permissions }: props) => {
         <Permission requiredPermission={permissions?.delete}>
         {/* Delete Many Modal */}
         <Modal isOpen={isOpenDeleteManyModal} onClose={() => setIsOpenDeleteManyModal(false)}>
-          <Typography variant='h3'>¿Seguro que quieres estos registros?</Typography>
-          <Typography variant='muted'>¡Esta acción no se puede deshacer!</Typography>
+          <Typography variant='h3'>{t('deleting-multiple-registries.title')}</Typography>
+          <Typography variant='muted'>{t('deleting-multiple-registries.title')}</Typography>
           <Divider />
 
           <div className='flex justify-end pt-2'>
-            <Button variant='danger' size='lg' onClick={handleDeleteMany}>Eliminar</Button>
-            <Button variant='neutral' size='lg' onClick={() => setIsOpenDeleteManyModal(false)}>Cancelar</Button>
+            <Button variant='danger' size='lg' onClick={handleDeleteMany}>{t('delete')}</Button>
+            <Button variant='neutral' size='lg' onClick={() => setIsOpenDeleteManyModal(false)}>{t('cancel')}</Button>
           </div>
         </Modal>
         </Permission>
