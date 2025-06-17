@@ -5,9 +5,12 @@ import Permission from '../Components/auth/Permission'
 import useUserData from '../hooks/useUserData';
 import Sidenav from '../Components/organisms/Sidenav';
 import Layout from '../Components/Layouts/Layout';
+import PageTitle from '../Components/layouts/PageTitle';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
 
+  const { t } = useTranslation('common');
   const { permissions } = useUserData()
   const apiURL = import.meta.env.PUBLIC_BACKEND_URL
 
@@ -18,6 +21,8 @@ const Home = () => {
   }
 
   return (
+    <>
+    <PageTitle>{t('home-title')}</PageTitle>
     <Layout>
       <div className='col-start-1 col-span-2'>
       <Sidenav />
@@ -56,6 +61,7 @@ const Home = () => {
         <p>Conectado a: {apiURL}</p>
         </div>
     </Layout>
+    </>
   );
 };
 
