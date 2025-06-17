@@ -1,11 +1,39 @@
 {
   "welcome": "Bienvenido",
+  "actions": "Acciones",
+  
   "login": {
-    "title": "Iniciar sesión.",
-    "button": "Iniciar sesión."
+    "title": "Iniciar sesión",
+    "button": "Entrar"
   },
+
+  "creating-new-registry": {
+    "title": "Creando nuevo registro",
+    "description": "Por favor, complete el formulario a continuación para crear un nuevo registro.",
+    "button": "Crear"
+  },
+
+  "updating-registry": {
+    "title": "Actualizando registro",
+    "description": "Por favor, complete el formulario a continuación para actualizar el registro.",
+    "button": "Actualizar"
+  },
+
+  "deleting-registry": {
+    "title": "Eliminando un registro",
+    "description": "¿Está seguro de que desea eliminar este registro? Esta acción no se puede deshacer.",
+    "button": "Eliminar"
+  },
+
+  "deleting-multiple-registries": {
+    "title": "Eliminando registros",
+    "description": "¿Está seguro de que desea eliminar estos registros? Esta acción no se puede deshacer.",
+    "button": "Eliminar"
+  },
+
+  "send": "Enviar",
   "options": "Opciones",
-  "toggleAll": "Mostrar todo",
+  "toggleAll": "Alternar todo",
   "page": "Página",
   "of": "de",
   "account": "Cuenta",
@@ -13,9 +41,118 @@
   "modify": "Modificar",
   "delete": "Eliminar",
   "create": "Crear",
-  "cancel": "Cancel",
-  "save": "Save",
-  "update": "Update",
-  "search": "Search",
-  "filter": "Filter"
+  "cancel": "Cancelar",
+  "save": "Guardar",
+  "update": "Actualizar",
+  "search": "Buscar",
+  "filter": "Filtrar",
+
+  "jwt-tokens": {
+    "title": "Tokens de acceso",
+    "id": "ID",
+    "user_id": "ID de usuario",
+    "token": "Token",
+    "created_at": "Creado el",
+    "expires_at": "Expira el"
+  },
+
+  "navigation": {
+    "appointments": "Citas",
+    "departments": "Departamentos",
+    "doctors": "Doctores",
+    "inventories": "Inventario",
+    "invoices": "Pagos pendientes",
+    "access-tokens": "Sesiones",
+    "medical-records": "Historiales médicos",
+    "roles": "Roles",
+    "suppliers": "Proveedores",
+    "treatments": "Tratamientos",
+    "auto-diagnosis": "Autodiagnóstico"
+  },
+
+  "appointments": {
+    "title": "Citas",
+    "id": "ID",
+    "patient_dni": "DNI del paciente",
+    "doctor_dni": "DNI del doctor",
+    "status_id": "Estado",
+    "hour": "Hora",
+    "date": "Fecha",
+    "forms": {}
+  },
+
+  "departments": {
+    "title": "Departamentos",
+    "id": "ID",
+    "name": "Nombre",
+    "description": "Descripción",
+    "created_at": "Creado el",
+    "updated_at": "Actualizado el"
+  },
+
+  "doctors": {
+    "title": "Doctores",
+    "id": "ID",
+    "doctor_dni": "DNI del doctor",
+    "specialization_id": "Especialización",
+    "department_id": "Departamento",
+    "availability": "Disponibilidad",
+    "status_id": "Estado"
+  },
+
+  "inventories": {
+    "title": "Inventario",
+    "id": "ID",
+    "supplier_id": "ID del proveedor",
+    "supplier": "Proveedor",
+    "item_name": "Ítem",
+    "description": "Descripción",
+    "quantity": "Cantidad",
+    "expiration_date": "Fecha de caducidad",
+    "created_at": "Creado el",
+    "updated_at": "Actualizado el"
+  },
+
+  "invoices": {
+    "title": "Facturas",
+    "id": "ID",
+    "amount": "Monto",
+    "updated_at": "Actualizado el",
+    "created_at": "Creado el",
+    "paid_at": "Pagado el"
+  },
+
+  "medical-records": {
+    "title": "Historiales médicos",
+    "id": "ID",
+    "patient_dni": "DNI del paciente",
+    "details": "Detalles",
+    "created_at": "Creado el",
+    "updated_at": "Actualizado el"
+  },
+
+  "roles": {
+    "title": "Roles",
+    "id": "ID",
+    "name": "Nombre",
+    "created_at": "Creado el"
+  },
+
+  "suppliers": {
+    "title": "Proveedores",
+    "id": "ID",
+    "name": "Nombre",
+    "description": "Descripción",
+    "address": "Dirección",
+    "created_at": "Creado el",
+    "updated_at": "Actualizado el"
+  },
+
+  "treatments": {
+    "title": "Tratamientos",
+    "id": "ID",
+    "name": "Nombre",
+    "description": "Descripción",
+    "created_at": "Creado el"
+  }
 }

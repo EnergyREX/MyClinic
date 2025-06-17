@@ -1,22 +1,158 @@
 {
   "welcome": "Welcome",
   "actions": "Actions",
+
   "login": {
     "title": "Login",
-    "button": "Login"
+    "button": "Enter"
   },
+
+  "creating-new-registry": {
+    "title": "Creating new record",
+    "description": "Please fill out the form below to create a new record.",
+    "button": "Create"
+  },
+
+  "updating-registry": {
+    "title": "Updating record",
+    "description": "Please fill out the form below to update the record.",
+    "button": "Update"
+  },
+
+  "deleting-registry": {
+    "title": "Deleting a record",
+    "description": "Are you sure you want to delete this record? This action cannot be undone.",
+    "button": "Delete"
+  },
+
+  "deleting-multiple-registries": {
+    "title": "Deleting records",
+    "description": "Are you sure you want to delete these records? This action cannot be undone.",
+    "button": "Delete"
+  },
+
+  "send": "Send",
   "options": "Options",
-  "toggleAll": "Toggle All",
+  "toggleAll": "Toggle all",
   "page": "Page",
   "of": "of",
   "account": "Account",
-  "logout": "Logout",
-  "modify": "Modify",
+  "logout": "Log out",
+  "modify": "Edit",
   "delete": "Delete",
   "create": "Create",
   "cancel": "Cancel",
   "save": "Save",
   "update": "Update",
   "search": "Search",
-  "filter": "Filter"
+  "filter": "Filter",
+
+  "jwt-tokens": {
+    "title": "Access tokens",
+    "id": "ID",
+    "user_id": "User ID",
+    "token": "Token",
+    "created_at": "Created at",
+    "expires_at": "Expires at"
+  },
+
+  "navigation": {
+    "appointments": "Appointments",
+    "departments": "Departments",
+    "doctors": "Doctors",
+    "inventories": "Inventory",
+    "invoices": "Pending payments",
+    "access-tokens": "Sessions",
+    "medical-records": "Medical records",
+    "roles": "Roles",
+    "suppliers": "Suppliers",
+    "treatments": "Treatments",
+    "auto-diagnosis": "Self-diagnosis"
+  },
+
+  "appointments": {
+    "title": "Appointments",
+    "id": "ID",
+    "patient_dni": "Patient ID",
+    "doctor_dni": "Doctor ID",
+    "status_id": "Status",
+    "hour": "Hour",
+    "date": "Date",
+    "forms": {}
+  },
+
+  "departments": {
+    "title": "Departments",
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "created_at": "Created at",
+    "updated_at": "Updated at"
+  },
+
+  "doctors": {
+    "title": "Doctors",
+    "id": "ID",
+    "doctor_dni": "Doctor ID",
+    "specialization_id": "Specialization",
+    "department_id": "Department",
+    "availability": "Availability",
+    "status_id": "Status"
+  },
+
+  "inventories": {
+    "title": "Inventory",
+    "id": "ID",
+    "supplier_id": "Supplier ID",
+    "supplier": "Supplier",
+    "item_name": "Item",
+    "description": "Description",
+    "quantity": "Quantity",
+    "expiration_date": "Expiration date",
+    "created_at": "Created at",
+    "updated_at": "Updated at"
+  },
+
+  "invoices": {
+    "title": "Invoices",
+    "id": "ID",
+    "amount": "Amount",
+    "updated_at": "Updated at",
+    "created_at": "Created at",
+    "paid_at": "Paid at"
+  },
+
+  "medical-records": {
+    "title": "Medical records",
+    "id": "ID",
+    "patient_dni": "Patient ID",
+    "details": "Details",
+    "created_at": "Created at",
+    "updated_at": "Updated at"
+  },
+
+  "roles": {
+    "title": "Roles",
+    "id": "ID",
+    "name": "Name",
+    "created_at": "Created at"
+  },
+
+  "suppliers": {
+    "title": "Suppliers",
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "address": "Address",
+    "created_at": "Created at",
+    "updated_at": "Updated at"
+  },
+
+  "treatments": {
+    "title": "Treatments",
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "created_at": "Created at"
+  }
 }
