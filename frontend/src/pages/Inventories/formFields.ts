@@ -1,37 +1,37 @@
 import i18n from '../../i18n'
 import { FieldDef } from "../../types/forms";
 
-export const fields: FieldDef[] = [
+export const getFields = (): FieldDef[] => [
   {
     name: "supplier_id",
-    label: i18n.t("inventories.supplier_id", { ns: "columndefs" }),
+    label: i18n.t("inventories.supplier_id"),
     type: "text",
     required: true,
   },
   {
     name: "item_name",
-    label: i18n.t("inventories.item_name", { ns: "columndefs" }),
+    label: i18n.t("inventories.item_name"),
     type: "text",
     required: true,
   },
   {
     name: "description",
-    label: i18n.t("inventories.description", { ns: "columndefs" }),
+    label: i18n.t("inventories.description"),
     type: "text",
     required: true,
   },
   {
     name: "quantity",
-    label: i18n.t("inventories.quantity", { ns: "columndefs" }),
+    label: i18n.t("inventories.quantity"),
     type: "text",
     required: true,
   },
   {
     name: "expiration_date",
-    label: i18n.t("inventories.expiration_date", { ns: "columndefs" }),
+    label: i18n.t("inventories.expiration_date"),
     type: "date",
     required: true,
   },
 ];
 
-export default fields
+export default getFields;
