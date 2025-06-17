@@ -2,10 +2,11 @@ import React, { useMemo } from 'react'
 import CrudPage from '../../Components/template/CrudPage'
 import { useTranslation } from 'react-i18next';
 import { Permissions } from '../../types/permissions';
+import PageTitle from '../../Components/layouts/PageTitle';
 
 const JWTTokens = () => {
 
-  const { t } = useTranslation('columndefs')
+  const { t } = useTranslation('common')
 
   const permissions: Permissions = {
     create: 'undefined', // JWTTokens are created on login in.
@@ -45,10 +46,13 @@ const columns = useMemo(() => [
 
 
   return (
+    <>
+    <PageTitle>{t('jwttokens.title')}</PageTitle>
     <CrudPage 
     permissions={permissions}
     columns={columns}
     />
+    </>
   )
 }
 
