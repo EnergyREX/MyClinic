@@ -1,11 +1,18 @@
 import React, { useMemo } from 'react'
 import CrudPage from '../../Components/template/CrudPage'
 import { useTranslation } from 'react-i18next';
-
+import { Permissions } from '../../types/permissions';
 
 const JWTTokens = () => {
 
   const { t } = useTranslation('columndefs')
+
+  const permissions: Permissions = {
+    create: 'undefined', // JWTTokens are created on login in.
+    read: 'view_jwttokens',
+    update: 'undefined', // JWTTokens are not updated.
+    delete: 'delete_jwttokens',
+  }
 
 const columns = useMemo(() => [
   {
@@ -39,6 +46,7 @@ const columns = useMemo(() => [
 
   return (
     <CrudPage 
+    permissions={permissions}
     columns={columns}
     />
   )

@@ -2,13 +2,18 @@ import React, { useMemo } from 'react'
 import CrudPage from '../../Components/template/CrudPage'
 import { useTranslation } from 'react-i18next';
 import fields from './formFields';
-
+import { Permissions } from '../../types/permissions';
 
 const Inventories = () => {
 
   const { t } = useTranslation('columndefs')
 
-  console.log(t(''))
+  const permissions: Permissions = {
+    create: 'create_inventory',
+    read: 'view_inventory',
+    update: 'update_inventory',
+    delete: 'delete_inventory',
+  }
 
 const columns = useMemo(() => [
   {
@@ -45,6 +50,7 @@ const columns = useMemo(() => [
 
   return (
     <CrudPage 
+    permissions={permissions}
     columns={columns}
     formFields={fields}
     />

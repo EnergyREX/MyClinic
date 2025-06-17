@@ -2,11 +2,18 @@ import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next';
 import fields from './formFields';
 import CrudPage from '../../Components/template/CrudPage';
-
+import { Permissions } from '../../types/permissions';
 
 const Departments = () => {
 
   const { t } = useTranslation('columndefs')
+
+    const permissions: Permissions = {
+      create: 'create_departments',
+      read: 'view_departments',
+      update: 'update_departments',
+      delete: 'delete_departments',
+    }
 
 const columns = useMemo(() => [
   {
@@ -40,6 +47,7 @@ const columns = useMemo(() => [
 
   return (
     <CrudPage 
+    permissions={permissions}
     columns={columns}
     formFields={fields}
     />
