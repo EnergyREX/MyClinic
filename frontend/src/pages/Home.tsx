@@ -7,6 +7,8 @@ import Sidenav from '../Components/organisms/Sidenav';
 import Layout from '../Components/Layouts/Layout';
 import PageTitle from '../Components/layouts/PageTitle';
 import { useTranslation } from 'react-i18next';
+import SidenavMobile from '../Components/organisms/SidenavMobile';
+import Typography from '../Components/atoms/Typography';
 
 const Home = () => {
 
@@ -24,42 +26,17 @@ const Home = () => {
     <>
     <PageTitle>{t('home-title')}</PageTitle>
     <Layout>
-      <div className='col-start-1 col-span-2'>
+      <div className='col-span-2'>
       <Sidenav />
+      <SidenavMobile />
       </div>
 
-      <div className='col-start-3 col-span-full'>
+      <div className='col-start-1 lg:col-start-3 col-span-full'>
 
-      <Button size='xl' type='button' variant='danger' onClick={sendReq}>Test</Button>
-
-      <h1 className='text-4xl font-bold'>MyClinic - Frontend</h1>
-      <p className='text-neutral-500'>Nashe</p>
-
-        <Link to="/register">
-          <Button size='xl' type='button' variant='primary'>Register</Button> 
-        </Link>
-
-        <Link to="/login">
-          <Button size='xl' type='button' variant='primary'>Register</Button> 
-        </Link>
-
-        <Permission requiredPermission='view_roles'>
-          <Link to="/asdadar">
-            <Button size='xl' type='button' variant='primary'>Ruta protegida</Button> 
-          </Link>
-        </Permission>
-        
-        <Link to="/departments">
-        <Button size='xl' type='button' variant='primary'>Departments</Button> 
-        </Link>
+      <Typography variant='h1'>{t('welcome')}</Typography>
 
 
-        <Link to="/crud-card">
-        <Button size='xl' type='button' variant='primary'>CCard</Button> 
-        </Link>
-
-        <p>Conectado a: {apiURL}</p>
-        </div>
+      </div>
     </Layout>
     </>
   );

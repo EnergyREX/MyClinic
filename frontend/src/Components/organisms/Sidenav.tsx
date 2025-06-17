@@ -11,18 +11,19 @@ import Link from '../molecules/Link'
 
 const Sidenav = () => {
 
+  const { t } = useTranslation()
+
   return (
-    <nav className='col-span-2 text-neutral-950 bg-neutral-300 h-dvh flex flex-col dark:bg-neutral-900 px-2 dark:text-white'>
+    <nav className='hidden lg:flex col-span-2 text-neutral-950 bg-neutral-300 h-dvh  flex-col dark:bg-neutral-900 px-2 dark:text-white'>
       <SidenavHeader />
     
       <Divider className='my-4'/>
 
       <SidenavBody />
 
-      <Divider />
 
       <SidenavFooter>
-        <Link to="/profile" label='Account' className='flex items-center gap-2'><User /> </Link>
+        <Link to="/profile" label={`${t('account')}`} className='flex items-center gap-2'><User /> </Link>
       </SidenavFooter>
     </nav>
   )

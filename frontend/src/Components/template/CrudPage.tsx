@@ -24,6 +24,7 @@ import Dropdown, { DropdownBtn } from '../molecules/Dropdown'
 import { Pencil, Trash } from 'lucide-react'
 import DynamicForm from '../organisms/DynamicForm'
 import Permission from '../auth/Permission'
+import SidenavMobile from '../organisms/SidenavMobile'
 
 interface props {
   columns: any[]
@@ -210,7 +211,8 @@ const CrudPage = ({ columns, formFields, permissions }: props) => {
   return (
     <CrudPageLayout>
       <Sidenav />
-      <div className='col-start-3 col-span-full m-3'>
+      <SidenavMobile />
+      <div className='col-start-1 lg:col-start-3 col-span-full m-3'>
         {/* Create Modal */}
         <Modal isOpen={isOpenCreateModal} onClose={() => setIsOpenCreateModal(false)}>
           <Typography variant='h3'>{t('creating-new-registry.title')}</Typography>

@@ -9,6 +9,7 @@ import logout from '../services/logoutService'
 import { replace, useNavigate } from 'react-router-dom'
 import InputField from '../Components/molecules/InputField'
 import PageTitle from '../Components/layouts/PageTitle'
+import SidenavMobile from '../Components/organisms/SidenavMobile'
 
 
 const Profile = () => {
@@ -23,17 +24,18 @@ const Profile = () => {
 
   return (
     <>
-    <PageTitle>{t('account.title')}</PageTitle>
+    <PageTitle>{t('account-title')}</PageTitle>
     <Layout>
       <div className='col-start-1 col-span-2'>
         <Sidenav />
+        <SidenavMobile />
       </div>
 
-      <div className='col-start-3 col-span-full pl-5 pt-5 pr-5'>
+      <div className='col-start-1 lg:col-start-3 col-span-full pl-5 pt-5 pr-5'>
         <Typography variant='h1' className='flex items-center gap-2 font-bold'><BadgeCheck />{t('account')}</Typography>
 
         {/* User data fields */}
-        <div>
+        <div className='flex flex-col'>
           <Typography variant='h3' className='mt-4 font-bold'>Información personal</Typography>
           <form id='personal-info' className='grid gap-5 grid-cols-3'>
             <InputField label={"Nombre"} name={"name"} />
