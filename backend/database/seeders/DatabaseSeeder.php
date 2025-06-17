@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Department;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\Specialization;
+use App\Models\Status;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -42,6 +45,7 @@ class DatabaseSeeder extends Seeder
             'delete_doctors',
 
             'view_appointments',
+            'view_single_appointments',
             'create_appointments',
             'update_appointments',
             'delete_appointments',
@@ -79,6 +83,12 @@ class DatabaseSeeder extends Seeder
             'create_records',
             'update_records',
             'delete_records',
+
+            'view_specializations',
+            'view_single_specialization',
+            'create_specializations',
+            'update_specializations',
+            'delete_specializations'
         ];
 
         foreach ($permissions as $perm) {
@@ -89,10 +99,36 @@ class DatabaseSeeder extends Seeder
 
         $allRoles['user']->permission()->sync([
             $allPermissions['view_appointments']->id,
-            $allPermissions['view_inventories']->id,
+            $allPermissions['view_inventory']->id,
             $allPermissions['view_records']->id,
             $allPermissions['view_roles']->id,
             $allPermissions['view_treatments']->id,
+        ]);
+
+        Department::create([
+            'name' => "Departamento Ejemplo",
+            'description' => "Esto es un departamento de ejemplo"
+        ]);
+
+        Status::create([
+            'name' => "Active",
+            'description' => ""
+        ]);
+
+        Status::create([
+            'name' => "Unactive",
+            'description' => ""
+        ]);
+
+        Status::create([
+            'name' => "Pending",
+            'description' => ""
+        ]);
+
+        Specialization::create([
+            'name' => "Especialización de ejemplo",
+            'description' => "Esto es una especialización de ejemplo",
+            'category' => 1
         ]);
 
         User::factory()->create([
