@@ -1,13 +1,14 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import CrudPage from '../../Components/template/CrudPage'
 import { useTranslation } from 'react-i18next';
-import { fields } from './formFields';
+import { getFields } from './formFields';
 import { Permissions } from '../../types/permissions';
+import PageTitle from '../../Components/layouts/PageTitle';
 
 
 const Appointments = () => {
 
-  const { t } = useTranslation('columndefs')
+  const { t } = useTranslation('common')
 
   const permissions: Permissions = {
     create: 'create_appointments',
@@ -45,14 +46,17 @@ const Appointments = () => {
     { id: 'date', header: t('appointments.date'), accessorKey: 'date' },
   ], [t])
 
-
+  const fields = getFields()
 
   return (
+    <>
+    <PageTitle>{t('appointments.title')}</PageTitle>
     <CrudPage 
     permissions={permissions}
     columns={columns}
     formFields={fields}
     />
+    </>
   )
 }
 

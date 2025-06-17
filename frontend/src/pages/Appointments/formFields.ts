@@ -1,37 +1,37 @@
-import i18n from '../../i18n'
-import { FieldDef } from "../../types/forms";
+import i18n from '../../i18n';
+import { FieldDef } from '../../types/forms';
 
-export const fields: FieldDef[] = [
+export const getFields = (): FieldDef[] => [
   {
-    name: "patient_dni",
-    label: i18n.t("appointments.patient_dni", { ns: "columndefs" }),
-    type: "text",
+    name: 'patient_dni',
+    label: i18n.t('appointments.patient_dni'),
+    type: 'text',
     required: true,
   },
   {
-    name: "doctor_dni",
-    label: i18n.t("appointments.doctor_dni", { ns: "columndefs" }),
-    type: "text",
+    name: 'doctor_dni',
+    label: i18n.t('appointments.doctor_dni'),
+    type: 'text',
     required: true,
   },
   {
-    name: "status_id",
-    label: i18n.t("appointments.status_id", { ns: "columndefs" }),
-    type: "text",
+    name: 'status_id',
+    label: i18n.t('appointments.status_id'),
+    type: 'text',
     required: true,
   },
   {
-    name: "hour",
-    label: i18n.t("appointments.hour", { ns: "columndefs" }),
-    type: "time",
+    name: 'hour',
+    label: i18n.t('appointments.hour'),
+    type: 'time',
     required: true,
   },
   {
-    name: "date",
-    label: i18n.t("appointments.date", { ns: "columndefs" }),
-    type: "date",
+    name: 'date',
+    label: i18n.t('appointments.date'),
+    type: 'date',
     required: true,
   },
 ];
 
-export default fields
+export default getFields;
