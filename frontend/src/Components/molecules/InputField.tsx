@@ -4,7 +4,7 @@ import Input from '../atoms/Input'
 
 const InputField = ({ label, name, ...props }) => {
   return (
-    <div>
+    <div className='flex flex-col gap-1 mb-4'>
       <Label>{label}</Label>
       <Input name={name} {...props} />
     </div>
