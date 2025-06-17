@@ -1,6 +1,8 @@
 {
   "welcome": "Welcome",
   "actions": "Actions",
+  "app-title": "MyClinic - Clinic Management System",
+  "home-title": "Dashboard",
 
   "login": {
     "title": "Login",

@@ -1,7 +1,9 @@
 {
   "welcome": "Bienvenido",
   "actions": "Acciones",
-  
+  "app-title": "MyClinic - Sistema de gestión de clínicas",
+  "home-title": "Dashboard",
+
   "login": {
     "title": "Iniciar sesión",
     "button": "Entrar"
