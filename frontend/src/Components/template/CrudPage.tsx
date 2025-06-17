@@ -23,8 +23,15 @@ import { useTranslation } from 'react-i18next'
 import Dropdown, { DropdownBtn } from '../molecules/Dropdown'
 import { Pencil, Trash } from 'lucide-react'
 import DynamicForm from '../organisms/DynamicForm'
+import Permission from '../auth/Permission'
 
-const CrudPage = ({ columns, formFields }) => {
+interface props {
+  columns: any[]
+  formFields: any[]
+  permissions?: Permissions
+}
+
+const CrudPage = ({ columns, formFields, permissions }: props) => {
   const { t } = useTranslation('columndefs')
 
   const [isOpenCreateModal, setIsOpenCreateModal] = useState(false)
@@ -56,12 +63,12 @@ const CrudPage = ({ columns, formFields }) => {
           <DropdownBtn
             onClick={() => updateModal(row.original)}
             className='text-blue-700 dark:text-blue-400 inline-flex p-1 my-1 gap-1 hover:bg-neutral-500 hover:cursor-pointer rounded-md'>
-            <Pencil /> Modify
+            <Pencil /> {t('update')}
           </DropdownBtn>
           <DropdownBtn
             onClick={() => deleteModal(row.original)}
             className='text-red-600 dark:text-red-400 inline-flex p-1 my-1 gap-1 hover:bg-neutral-500 hover:cursor-pointer rounded-md'>
-            <Trash /> Delete
+            <Trash /> {t('delete')}
           </DropdownBtn>
         </div>
       </Dropdown>
@@ -224,6 +231,7 @@ const CrudPage = ({ columns, formFields }) => {
         </Modal>
 
         {/* Update Modal */}
+        <Permission requiredPermission={permissions?.update}>
         <Modal isOpen={isOpenUpdateModal} onClose={() => setIsOpenUpdateModal(false)}>
           <Typography variant='h3'>Actualizar registro</Typography>
           <Typography variant='muted'>Modifica los campos necesarios.</Typography>
@@ -241,7 +249,9 @@ const CrudPage = ({ columns, formFields }) => {
             <Button variant='neutral' size='lg' onClick={() => setIsOpenUpdateModal(false)}>Cancelar</Button>
           </div>
         </Modal>
+        </Permission>
 
+        <Permission requiredPermission={permissions?.delete}>
         {/* Delete Modal */}
         <Modal isOpen={isOpenDeleteModal} onClose={() => setIsOpenDeleteModal(false)}>
           <Typography variant='h3'>¿Seguro que quieres eliminar esto?</Typography>
@@ -253,7 +263,9 @@ const CrudPage = ({ columns, formFields }) => {
             <Button variant='neutral' size='lg' onClick={() => setIsOpenDeleteModal(false)}>Cancelar</Button>
           </div>
         </Modal>
+        </Permission>
 
+        <Permission requiredPermission={permissions?.delete}>
         {/* Delete Many Modal */}
         <Modal isOpen={isOpenDeleteManyModal} onClose={() => setIsOpenDeleteModal(false)}>
           <Typography variant='h3'>¿Seguro que quieres estos registros?</Typography>
@@ -265,8 +277,10 @@ const CrudPage = ({ columns, formFields }) => {
             <Button variant='neutral' size='lg' onClick={() => setIsOpenDeleteManyModal(false)}>Cancelar</Button>
           </div>
         </Modal>
+        </Permission>
 
         <DataTable
+          permissions={permissions}
           table={table}
           openCreate={createModal}
           openDelete={deleteManyModal}
