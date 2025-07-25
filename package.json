@@ -1,0 +1,23 @@
+{
+  "name": "myclinic",
+  "version": "1.0.0",
+  "description": "A Clinic Management System",
+  "homepage": "https://github.com/EnergyREX/MyClinic#readme",
+  "bugs": {
+    "url": "https://github.com/EnergyREX/MyClinic/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnergyREX/MyClinic.git"
+  },
+  "license": "ISC",
+  "author": "Francisco Javier Martín Fernández aka EnergyREX",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && php artisan serve",
+    "dev": "npm run dev:frontend && npm run dev:backend"
+  }
+}
