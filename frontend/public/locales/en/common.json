@@ -5,6 +5,7 @@
   "app-title": "MyClinic - Clinic Management System",
   "home-title": "Dashboard",
   "account-title": "Profile",
+  "langSelect": "Language",
 
   "login": {
     "title": "Login",

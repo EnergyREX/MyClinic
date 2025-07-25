@@ -10,6 +10,8 @@ import { replace, useNavigate } from 'react-router-dom'
 import InputField from '../Components/molecules/InputField'
 import PageTitle from '../Components/layouts/PageTitle'
 import SidenavMobile from '../Components/organisms/SidenavMobile'
+import Select from '../Components/molecules/Select'
+import Option from '../Components/atoms/Option'
 
 
 const Profile = () => {
@@ -22,17 +24,38 @@ const Profile = () => {
     navigate("/login", {replace: true})
   }
 
+
+  const languageOptions: any = ["es", "en"]
+
+  function changeLanguage(lang) {
+    localStorage.setItem('i18nextLng', lang)
+  }
+
   return (
     <>
     <PageTitle>{t('account-title')}</PageTitle>
+    {/* Sidenav */}
     <Layout>
       <div className='col-start-1 col-span-2'>
         <Sidenav />
         <SidenavMobile />
       </div>
 
+      {/* Title */}
+
       <div className='col-start-1 lg:col-start-3 col-span-full pl-5 pt-5 pr-5'>
         <Typography variant='h1' className='flex items-center gap-2 font-bold'><BadgeCheck />{t('account')}</Typography>
+
+        {/* Preferences */}
+        <div className=''>
+            <Select label={t('langSelect')}>
+              {languageOptions.map(column => (
+                <div key={column.id} className='px-1' onClick={() => changeLanguage(column)}>
+                  <Option label={column} />
+                </div>
+              ))}
+            </Select>
+        </div>
 
         {/* User data fields */}
         <div className='flex flex-col'>

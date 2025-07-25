@@ -5,6 +5,7 @@
   "app-title": "MyClinic - Sistema de gestión de clínicas",
   "home-title": "Dashboard",
   "account-title": "Perfil",
+  "langSelect": "Idioma",
 
   "login": {
     "title": "Iniciar sesión",
