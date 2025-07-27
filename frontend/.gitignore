@@ -12,3 +12,5 @@ dist/
 !.vscode/extensions.json
 .idea
 .env
+*storybook.log
+storybook-static
