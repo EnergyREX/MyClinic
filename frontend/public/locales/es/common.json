@@ -13,6 +13,17 @@
     "button": "Iniciar sesión"
   },
 
+  "placeholders": {
+    "name": "Tu nombre",
+    "surname": "Tus apellidos",
+    "email": "Tu correo electrónico",
+    "phoneNum": "Tu número de teléfono",
+    "address": "Tu dirección",
+    "password": "Escribe una contraseña",
+    "confirm_password": "Repite tu contraseña",
+    "password_login": "Escribe tu contraseña"
+  },
+
   "register": {
     "title": "Registro",
     "subtle": "Por favor, regístrese para continuar",

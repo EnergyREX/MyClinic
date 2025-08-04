@@ -53,7 +53,7 @@ const Login = () => {
   return (
     <>
       <PageTitle>{t("home.title")}</PageTitle>
-      <AuthLayout>
+      <AuthLayout className="h-dvh">
         <div className="mb-5 mt-5 w-full justify-center items-center text-center">
           <Typography variant="h1" className="font-bold">
             {t("login.title")}
@@ -67,11 +67,17 @@ const Login = () => {
         </div>
         <div className="bg-neutral-300 p-5 rounded-lg dark:bg-neutral-700 dark:text-white max-w-md w-full">
           <form className="flex flex-col" onSubmit={onSubmit}>
-            <InputField label={t("email")} type="text" {...register("email")} />
+            <InputField
+              label={t("email")}
+              type="text"
+              placeholder={t("placeholders.email")}
+              {...register("email")}
+            />
 
             <InputField
               label={t("password")}
               type="password"
+              placeholder={t("placeholders.password_login")}
               {...register("password")}
             />
 

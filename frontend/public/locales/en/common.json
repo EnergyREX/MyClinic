@@ -7,6 +7,17 @@
   "account-title": "Profile",
   "langSelect": "Language",
 
+  "placeholders": {
+    "name": "Your name",
+    "surname": "Your surname",
+    "email": "Your email address",
+    "phoneNum": "Your phone number",
+    "address": "Your address",
+    "password": "Enter a password",
+    "confirm_password": "Repeat your password",
+    "password_login": "Enter your password"
+  },
+
   "login": {
     "title": "Login",
     "subtle": "Please log in to continue",

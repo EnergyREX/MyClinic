@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 interface props extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -6,12 +6,14 @@ interface props extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const AuthLayout = ({ children, className, ...props }: props) => {
-  
-  const style: string = 'flex flex-col items-center justify-center h-[100vh] bg-gray-100 w-full dark:bg-neutral-800';
-  
-  return (
-    <main className={`${style} ${className}`} {...props}>{children}</main>
-  )
-}
+  const style: string =
+    "flex flex-col items-center justify-center bg-gray-100 dark:bg-neutral-800";
 
-export default AuthLayout
+  return (
+    <main className={`${style} ${className}`} {...props}>
+      {children}
+    </main>
+  );
+};
+
+export default AuthLayout;
