@@ -1,14 +1,15 @@
-import { defineConfig } from '@rsbuild/core';
-import { pluginReact } from '@rsbuild/plugin-react';
+import { defineConfig } from "@rsbuild/core";
+import { pluginReact } from "@rsbuild/plugin-react";
+import path from "path";
 
 export default defineConfig({
-  plugins: [
-    pluginReact()
-  ],
+  plugins: [pluginReact()],
   source: {
     define: {
-      'process.env.RSBUILD_BACKEND_URL': JSON.stringify(process.env.BACKEND_URL)
-    }
+      "process.env.RSBUILD_BACKEND_URL": JSON.stringify(
+        process.env.BACKEND_URL,
+      ),
+    },
   },
   module: {
     rules: [
@@ -16,7 +17,12 @@ export default defineConfig({
         test: /\.css$/,
         use: ["postcss-loader"],
         type: "css",
-      }
-    ]
-  }
+      },
+    ],
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+  },
 });
