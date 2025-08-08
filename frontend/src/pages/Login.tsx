@@ -54,18 +54,18 @@ const Login = () => {
     <>
       <PageTitle>{t("home.title")}</PageTitle>
       <AuthLayout className="h-dvh">
-        <div className="mb-5 mt-5 w-full justify-center items-center text-center">
-          <Typography variant="h1" className="font-bold">
-            {t("login.title")}
-          </Typography>
-          <Typography
-            variant="muted"
-            className="text-neutral-500 dark:text-neutral-400"
-          >
-            {t("login.subtle")}
-          </Typography>
-        </div>
         <div className="bg-neutral-300 p-5 rounded-lg dark:bg-neutral-700 dark:text-white max-w-md w-full">
+          <div className="mb-5 mt-5 w-full justify-center items-center text-center">
+            <Typography variant="h1" className="font-bold">
+              {t("login.title")}
+            </Typography>
+            <Typography
+              variant="muted"
+              className="text-neutral-500 dark:text-neutral-400"
+            >
+              {t("login.subtle")}
+            </Typography>
+          </div>
           <form className="flex flex-col" onSubmit={onSubmit}>
             <InputField
               label={t("email")}
@@ -91,13 +91,14 @@ const Login = () => {
               {t("login.button")}
             </Button>
           </form>
+          <Link
+            className="font-light pt-2 dark:text-white flex gap-2 hover:text-sky-500 duration-100"
+            to={"/register"}
+          >
+            {t("register-now")}{" "}
+            <SquareArrowOutUpRightIcon className="w-[16px]" />
+          </Link>
         </div>
-        <Link
-          className="font-light pt-2 dark:text-white flex gap-2 hover:text-sky-500 duration-100"
-          to={"/register"}
-        >
-          {t("register-now")} <SquareArrowOutUpRightIcon className="w-[16px]" />
-        </Link>
       </AuthLayout>
     </>
   );
