@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home.tsx";
+import Home from "./pages/Home/Home.tsx";
 import ProtectedRoute from "./components/auth/ProtectedRoute.tsx";
 import ProtectedRoutes from "./components/auth/ProtectedRoutes.tsx";
 import useUserData from "./hooks/useUserData.tsx";
@@ -17,7 +17,8 @@ import Treatments from "./pages/Treatments/Treatments.tsx";
 import JWTTokens from "./pages/JWTTokens/JWTTokens.tsx";
 import Register from "./pages/Register.tsx";
 import Login from "./pages/Login.tsx";
-import Account from "./pages/Account.tsx";
+import Account from "./pages/Account/Account.tsx";
+import Roles from "./pages/Roles/Roles.tsx";
 
 const App = () => {
   const { permissions, recoverPermissions } = useUserData();
@@ -43,6 +44,14 @@ const App = () => {
             element={
               <ProtectedRoute permission="view_dashboard">
                 <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/roles"
+            element={
+              <ProtectedRoute permission="view_roles">
+                <Roles />
               </ProtectedRoute>
             }
           />
